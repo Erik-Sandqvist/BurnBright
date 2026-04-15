@@ -36,15 +36,9 @@ function App() {
         <section className="mx-auto w-full max-w-[1180px] rounded-[28px] border border-white/10 bg-[linear-gradient(180deg,rgba(14,18,12,0.88),rgba(11,18,56,0.64))] p-6 shadow-[0_30px_80px_rgba(0,0,0,0.35)] sm:p-8">
           <div className="grid gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
             <div>
-              <p className="text-[0.72rem] uppercase tracking-[0.2em] text-white/65">SS26 / visual identity study</p>
               <h1 className="mt-3 text-5xl font-bold leading-[0.9] tracking-[-0.04em] text-[#f5ecec] sm:text-7xl lg:text-[8.75rem]">
                 Burn Bright
               </h1>
-              <p className="mt-5 max-w-[62ch] text-base leading-7 text-white/78 sm:text-lg">
-                A fictional clothing brand shaped like a neon bruise: elegant, intense,
-                and built to feel more like a mood than a store.
-              </p>
-
               <div className="mt-7 flex flex-wrap items-center gap-4">
                 <a
                   className="inline-flex items-center justify-center rounded-full bg-[linear-gradient(135deg,#ec2227,#6e0e10)] px-5 py-3 text-sm font-medium text-[#fff1f2] shadow-[0_16px_30px_rgba(236,34,39,0.24)] transition-transform duration-200 hover:-translate-y-0.5 hover:shadow-[0_20px_36px_rgba(236,34,39,0.34)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#f8d9dd]"
@@ -86,7 +80,6 @@ function App() {
 
         <section className="mx-auto w-full max-w-[1180px] py-10 sm:py-12" id="manifesto">
           <div className="mb-5 grid gap-2">
-            <p className="text-[0.72rem] uppercase tracking-[0.2em] text-white/65">Manifesto</p>
             <h2 className="text-3xl font-bold tracking-[-0.04em] text-[#f5ecec] sm:text-5xl">
               Made to glow in low light
             </h2>
