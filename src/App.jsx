@@ -50,6 +50,7 @@ function App() {
         <main className="relative overflow-hidden px-4 pb-10 pt-4 text-[#f4e8ea] sm:px-6 lg:px-8 w-full">
 
         <section className="mx-auto w-full max-w-[1180px] rounded-[28px] border border-white/10 bg-[linear-gradient(180deg,rgba(14,18,12,0.88),rgba(11,18,56,0.64))] p-6 shadow-[0_30px_80px_rgba(0,0,0,0.35)] sm:p-8">
+        
           <Hero />
 
           <div className="mt-8 flex flex-wrap gap-3" aria-label="Brand rituals">
@@ -63,6 +64,11 @@ function App() {
             ))}
           </div>
         </section>
+         {/* <img
+            className=" right-0 top-0 mx-auto h-full w-3/4 object-cover rounded-[28px] pointer-events-none"
+            src="/img/outside.jpg"
+            alt=""
+          /> */}
 
         <section className="mx-auto w-full max-w-[1180px] py-10 sm:py-12" id="manifesto">
           <div className="mb-5 grid gap-2">

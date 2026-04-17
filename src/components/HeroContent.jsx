@@ -1,6 +1,11 @@
 export default function HeroContent() {
   return (
     <div>
+         <img
+            className=" right-0 top-0 mx-auto h-full w-3/4 object-cover rounded-[28px] pointer-events-none"
+            src="/img/outside.jpg"
+            alt=""
+          />
       <h1 className="mt-3 text-5xl font-bold leading-[0.9] tracking-[-0.04em] text-[#f5ecec] sm:text-7xl lg:text-[8.75rem]">
         Burn Bright
       </h1>
@@ -11,9 +16,6 @@ export default function HeroContent() {
         >
           Enter the mood
         </a>
-        <span className="text-xs uppercase tracking-[0.2em] text-white/68">
-          Designed to feel cinematic, nocturnal, and bold.
-        </span>
       </div>
     </div>
   )
