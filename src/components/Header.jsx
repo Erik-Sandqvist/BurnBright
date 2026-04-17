@@ -1,7 +1,7 @@
 function Header() {
   return (
     <header
-      className="top-0 z-10 w-full border-y border-white/12 bg-[radial-gradient(circle_at_15%_0%,rgba(236,14,19,0.14),transparent_28%),linear-gradient(135deg,rgba(11,8,6,0.88),rgba(14,8,12,0.72))] px-7 py-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.09),0_18px_40px_rgba(0,0,0,0.22)] backdrop-blur-[18px] saturate-150"
+      className="relative top-0 z-20 w-full border-y border-white/12 bg-[radial-gradient(circle_at_15%_0%,rgba(236,14,19,0.14),transparent_28%),linear-gradient(135deg,rgba(11,8,6,0.88),rgba(14,8,12,0.72))] px-7 py-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.09),0_18px_40px_rgba(0,0,0,0.22)] backdrop-blur-[18px] saturate-150"
       aria-label="Burn Bright header"
     >
       <div className="mx-auto flex w-full items-center justify-between gap-4 max-md:flex-col max-md:items-start">
