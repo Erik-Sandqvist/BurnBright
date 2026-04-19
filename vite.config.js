@@ -9,6 +9,20 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url))
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), tailwindcss()],
+  server: {
+    proxy: {
+      '/umbraco': {
+        target: 'https://localhost:7210',
+        changeOrigin: true,
+        secure: false,
+      },
+      '/media': {
+        target: 'https://localhost:7210',
+        changeOrigin: true,
+        secure: false,
+      },
+    },
+  },
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
