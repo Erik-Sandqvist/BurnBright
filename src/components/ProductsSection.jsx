@@ -46,12 +46,21 @@ export default function ProductsSection() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
 
+  const productAlias = import.meta.env.VITE_UMBRACO_PRODUCT_ALIAS ?? 'product'
+  const umbracoBaseUrl = import.meta.env.VITE_UMBRACO_BASE_URL ?? ''
+  const startItem = import.meta.env.VITE_UMBRACO_START_ITEM
+  const apiKey = import.meta.env.VITE_UMBRACO_DELIVERY_API_KEY
+  const acceptLanguage = import.meta.env.VITE_UMBRACO_ACCEPT_LANGUAGE
+  const acceptSegment = import.meta.env.VITE_UMBRACO_ACCEPT_SEGMENT
+
   const endpoint = useMemo(() => {
+    const defaultPath = `/umbraco/delivery/api/v2/content?fetch=descendants:*&filter=contentType:${productAlias}&take=100`
+
     return (
       import.meta.env.VITE_UMBRACO_PRODUCTS_ENDPOINT ??
-      '/umbraco/delivery/api/v2/content?filter=contentType:product'
+      (umbracoBaseUrl ? `${umbracoBaseUrl}${defaultPath}` : defaultPath)
     )
-  }, [])
+  }, [productAlias, umbracoBaseUrl])
 
   useEffect(() => {
     const controller = new AbortController()
@@ -65,6 +74,10 @@ export default function ProductsSection() {
           signal: controller.signal,
           headers: {
             Accept: 'application/json',
+            ...(startItem ? { 'Start-Item': startItem } : {}),
+            ...(apiKey ? { 'Api-Key': apiKey } : {}),
+            ...(acceptLanguage ? { 'Accept-Language': acceptLanguage } : {}),
+            ...(acceptSegment ? { 'Accept-Segment': acceptSegment } : {}),
           },
         })
 
@@ -89,7 +102,7 @@ export default function ProductsSection() {
     return () => controller.abort()
   }, [endpoint])
 
-  const items = products.length > 0 ? products : !loading && !error ? fallbackProducts : []
+  const items = products
 
   return (
     <section className="mx-auto w-4/5 py-10 sm:py-12" id="manifesto">
@@ -98,29 +111,39 @@ export default function ProductsSection() {
         <p className="text-sm text-white/70">
           {loading
             ? 'Laddar produkter...'
-            : error || 'Kuraterat urval hämtat från Umbraco.'}
+            : error
+              ? error
+              : items.length === 0
+                ? 'Inga publicerade produkter hittades i Umbraco ännu.'
+                : 'Kuraterat urval hämtat från Umbraco.'}
         </p>
       </div>
 
-      <div className="grid gap-4 md:grid-cols-3">
-        {items.map((product) => (
-          <article
-            key={product.id}
-            className="rounded-[24px] border border-white/10 bg-[linear-gradient(180deg,rgba(11,18,56,0.72),rgba(14,18,12,0.8))] p-6 shadow-[0_18px_44px_rgba(0,0,0,0.25)]"
-          >
-            {product.imageUrl ? (
-              <img
-                src={product.imageUrl}
-                alt={product.name}
-                className="mb-4  w-5/6 mx-auto rounded-xl object-cover"
-              />
-            ) : null}
-            <h3 className="mt-1 text-2xl font-bold tracking-[-0.04em] text-[#f5ecec]">{product.name}</h3>
-            {product.price ? <p className="mt-2 text-[0.8rem] uppercase tracking-[0.2em] text-[#ec2227]">{product.price}</p> : null}
-            <p className="mt-4 max-w-[62ch] text-base leading-7 text-white/78">{product.description}</p>
-          </article>
-        ))}
-      </div>
+      {items.length === 0 && !loading ? (
+        <div className="rounded-[24px] border border-dashed border-white/18 bg-[linear-gradient(180deg,rgba(11,18,56,0.45),rgba(14,18,12,0.55))] p-6 text-sm text-white/70">
+          Inga produkter hittades via Delivery API. Kontrollera att innehall ar publicerat och att content type alias matchar <strong>{productAlias}</strong>.
+        </div>
+      ) : (
+        <div className="grid gap-4 md:grid-cols-3">
+          {items.map((product) => (
+            <article
+              key={product.id}
+              className="rounded-[24px] border border-white/10 bg-[linear-gradient(180deg,rgba(11,18,56,0.72),rgba(14,18,12,0.8))] p-6 shadow-[0_18px_44px_rgba(0,0,0,0.25)]"
+            >
+              {product.imageUrl ? (
+                <img
+                  src={product.imageUrl}
+                  alt={product.name}
+                  className="mb-4  w-5/6 mx-auto rounded-xl object-cover"
+                />
+              ) : null}
+              <h3 className="mt-1 text-2xl font-bold tracking-[-0.04em] text-[#f5ecec]">{product.name}</h3>
+              {product.price ? <p className="mt-2 text-[0.8rem] uppercase tracking-[0.2em] text-[#ec2227]">{product.price}</p> : null}
+              <p className="mt-4 max-w-[62ch] text-base leading-7 text-white/78">{product.description}</p>
+            </article>
+          ))}
+        </div>
+      )}
     </section>
   )
 }

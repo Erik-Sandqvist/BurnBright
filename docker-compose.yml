@@ -1,0 +1,28 @@
+services:
+  # Umbraco Backend + Frontend (combined in single container)
+  burnbright:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "7210:7210"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://+:7210
+    volumes:
+      # Persist Umbraco database
+      - ./BurnBright.Umbraco/umbraco/Data:/app/umbraco/Data
+      # Persist Umbraco media files
+      - ./BurnBright.Umbraco/umbraco/media:/app/umbraco/media
+    networks:
+      - burnbright-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:7210/umbraco/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+networks:
+  burnbright-network:
+    driver: bridge
