@@ -271,63 +271,6 @@
       oklch(0.556 0 0);
 }
 
-.burning-logo {
-    border-radius: 10px;
-    position: relative;
-    display: inline-grid;
-    place-items: center;
-    isolation: isolate;
-    color: #ec2227;
-    transform-origin: center 84%;
-    will-change: transform, filter;
-    animation: logo-flicker 5.4s ease-in-out infinite;
-    text-shadow:
-        0 0 4px rgba(236, 34, 39, 0.2),
-        0 0 7px rgba(255, 102, 0, 0.1),
-        0 -1px 4px rgba(255, 176, 64, 0.03);
-}
-
-.burning-logo__text {
-    position: relative;
-    z-index: 3;
-}
-
-.burning-logo__flames,
-.burning-logo__sparks {
-    position: absolute;
-    pointer-events: none;
-}
-
-.burning-logo__flames {
-    border-radius: 10px;
-    inset: -1.05em -0.45em -0.2em;
-    z-index: 2;
-    opacity: 0.09;
-    mix-blend-mode: screen;
-    background:
-        radial-gradient(60% 120% at 10% 100%, rgba(255, 87, 34, 0.86), transparent 70%),
-        radial-gradient(52% 112% at 30% 100%, rgba(255, 133, 36, 0.78), transparent 74%),
-        radial-gradient(56% 130% at 52% 100%, rgba(255, 196, 94, 0.65), transparent 72%),
-        radial-gradient(52% 116% at 74% 100%, rgba(255, 115, 24, 0.8), transparent 70%),
-        radial-gradient(54% 124% at 92% 100%, rgba(236, 34, 39, 0.7), transparent 70%);
-    filter: blur(1.3px) saturate(0.74);
-    transform-origin: center bottom;
-    animation: flame-rise 3.6s ease-in-out infinite;
-}
-
-.burning-logo__flames::after {
-    content: "";
-    position: absolute;
-    inset: -0.2em 0.2em 0;
-    background:
-        radial-gradient(38% 95% at 24% 100%, rgba(255, 244, 196, 0.4), transparent 66%),
-        radial-gradient(34% 95% at 48% 100%, rgba(255, 216, 143, 0.52), transparent 65%),
-        radial-gradient(42% 110% at 72% 100%, rgba(255, 233, 178, 0.36), transparent 67%);
-    filter: blur(0.55px);
-    opacity: 0.18;
-    animation: flame-rise 3.1s ease-in-out infinite reverse;
-}
-
 .burning-logo__sparks {
     inset: -1.45em -0.8em -0.4em;
     z-index: 4;

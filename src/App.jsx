@@ -31,9 +31,9 @@ function App() {
       <div className="relative z-10 min-h-screen">
         <Header />
         <main className="relative overflow-hidden px-4 pb-10 pt-4 text-[#f4e8ea] sm:px-6 lg:px-8 w-full">
-
+  
         <section className="mx-auto w-4/5 rounded-[28px] border border-white/10 bg-[linear-gradient(180deg,rgba(14,18,12,0.88),rgba(11,18,56,0.64))] p-6 shadow-[0_30px_80px_rgba(0,0,0,0.35)] sm:p-8">
-        
+     
           <Hero />
 
           <div className="mt-8 flex flex-wrap gap-3" aria-label="Brand rituals">
@@ -67,6 +67,11 @@ function App() {
             feels warm, dangerous, and carefully controlled.
           </p>
         </section>
+         <img
+            className="mx-0-auto mx-auto w-1/2 rounded-[28px] pointer-events-none opacity-50"
+            src="/img/logo.svg"
+            alt=""
+          />
 
         <footer className="mx-auto w-4/5 pb-2 pt-2" id="contact">
           <p className="text-[0.68rem] uppercase tracking-[0.18em] text-white/52">

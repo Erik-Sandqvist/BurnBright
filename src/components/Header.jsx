@@ -8,7 +8,7 @@ function Header() {
         <div className="grid gap-1" aria-label="Burn Bright">
           <span
             className="burning-logo text-[clamp(2.4rem,5vw,1.8rem)] leading-none tracking-[0.04em] text-[#ec2227] ml-56 drop-shadow-[0_0_28px_rgba(236,34,39,0.35)]"
-            style={{ fontFamily: '"Adore You", "Brush Script MT", "Apple Chancery", cursive', fontWeight: '900' }}
+            style={{ fontFamily: '"above-the-sky-condensed", sans-serif', fontWeight: 400, fontStyle: 'normal' }}
           >
             <span className="burning-logo__text">Burn Bright</span>
             <span className="burning-logo__flames" aria-hidden="true" />
