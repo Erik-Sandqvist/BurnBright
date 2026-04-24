@@ -54,7 +54,7 @@ export default function ProductsSection() {
   const acceptSegment = import.meta.env.VITE_UMBRACO_ACCEPT_SEGMENT
 
   const endpoint = useMemo(() => {
-    const defaultPath = `/umbraco/delivery/api/v2/content?fetch=descendants:*&filter=contentType:${productAlias}&take=100`
+    const defaultPath = `/umbraco/delivery/api/v2/content?fetch=descendants:/&filter=contentType:${productAlias}&take=100`
 
     return (
       import.meta.env.VITE_UMBRACO_PRODUCTS_ENDPOINT ??

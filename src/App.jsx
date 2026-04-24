@@ -68,7 +68,17 @@ function App() {
             src="/img/logo.svg"
             alt=""
           />
-
+          <section className="mx-auto w-2/5 rounded-[28px] overflow-hidden">
+            <video
+              className="w-full h-auto rounded-[28px]"
+              muted
+              autoPlay
+              loop
+            >
+              <source src="/Main.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </section>
         <footer className="mx-auto w-4/5 pb-2 pt-2" id="contact">
           <p className="text-[0.68rem] uppercase tracking-[0.18em] text-white/52">
             Burn Bright / a mood study for a fictional label.
