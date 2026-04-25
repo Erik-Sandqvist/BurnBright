@@ -30,13 +30,13 @@ function App() {
 
       <div className="relative z-10 min-h-screen">
         <Header />
-        <main className="relative overflow-hidden px-4 pb-10 pt-4 text-[#f4e8ea] sm:px-6 lg:px-8 w-full">
+        <main className="relative px-4 pb-10 pt-4 text-[#f4e8ea] sm:px-6 lg:px-8 w-full">
   
-        <section className="mx-auto w-4/5 rounded-[28px] border border-white/10 bg-[linear-gradient(180deg,rgba(24,18,12,0.88),rgba(21,18,36,0.64))] p-6 shadow-[0_30px_80px_rgba(0,0,0,0.35)] sm:p-8">
+        <section className="mx-auto w-4/5 rounded-[28px]  p-6 sm:p-8">
      
           <Hero />
 
-          <div className="mt-8 flex flex-wrap gap-3" aria-label="Brand rituals">
+          {/* <div className="mt-8 flex flex-wrap gap-3" aria-label="Brand rituals">
             {rituals.map((ritual) => (
               <span
                 key={ritual}
@@ -45,13 +45,13 @@ function App() {
                 {ritual}
               </span>
             ))}
-          </div>
+          </div> */}
         </section>
        
 
         <ProductsSection />
 
-        <section className="mx-auto grid w-4/5 gap-5 pb-5 pt-4 lg:grid-cols-[1fr_0.8fr] lg:items-end">
+        {/* <section className="mx-auto grid w-4/5 gap-5 pb-5 pt-4 lg:grid-cols-[1fr_0.8fr] lg:items-end">
           <div>
             <p className="text-[0.72rem] uppercase tracking-[0.2em] text-white/65">Visual direction</p>
             <h2 id="visual" className="mt-2 text-3xl font-bold tracking-[-0.04em] text-[#f5ecec] sm:text-5xl">
@@ -62,10 +62,15 @@ function App() {
             The palette stays saturated and heavy, with deep shadows and a red accent that
             feels warm, dangerous, and carefully controlled.
           </p>
-        </section>
+        </section> */}
          <img
             className="mx-0-auto mx-auto w-1/2 rounded-[28px] pointer-events-none opacity-50"
             src="/img/logo.svg"
+            alt=""
+          />
+           <img
+            className=" right-0 top-0 mx-auto h-full w-3/4 object-cover rounded-[28px] pointer-events-none"
+            src="/img/outside.jpg"
             alt=""
           />
           <section className="mx-auto w-2/5 rounded-[28px] overflow-hidden">
