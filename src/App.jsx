@@ -69,7 +69,7 @@ function App() {
             alt=""
           />
            <img
-            className=" right-0 top-0 mx-auto h-full w-3/4 object-cover rounded-[28px] pointer-events-none"
+            className=" right-0 top-0 mx-auto h-full w-full object-cover rounded-[28px] pointer-events-none"
             src="/img/outside.jpg"
             alt=""
           />
