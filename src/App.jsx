@@ -32,8 +32,18 @@ function App() {
         <Header />
         <main className="relative px-4 pb-10 pt-4 text-[#f4e8ea] sm:px-6 lg:px-8 w-full">
   
-        <section className="mx-auto w-4/5 rounded-[28px]  p-6 sm:p-8">
-     
+        <section className="mx-auto w-3/5 rounded-[28px]">
+          <section className="mx-auto rounded-[28px] overflow-hidden">
+            <video
+              className="w-full h-auto rounded-[28px]"
+              muted
+              autoPlay
+              loop
+            >
+              <source src="/Main.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </section>
           <Hero />
 
           {/* <div className="mt-8 flex flex-wrap gap-3" aria-label="Brand rituals">
