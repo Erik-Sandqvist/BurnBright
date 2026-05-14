@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 export default function FadeIn({
   children,
@@ -9,6 +9,7 @@ export default function FadeIn({
   delay = 0,
 }) {
   const ref = useRef(null)
+  const [inView, setInView] = useState(false)
 
   useEffect(() => {
     const el = ref.current
@@ -17,7 +18,7 @@ export default function FadeIn({
     const obs = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          entry.target.classList.toggle('in-view', entry.isIntersecting)
+          setInView(entry.isIntersecting)
         })
       },
       { root: null, rootMargin, threshold }
@@ -31,8 +32,18 @@ export default function FadeIn({
   return (
     <div
       ref={ref}
-      className={`fade-in fade-in--${direction} ${className}`.trim()}
-      style={{ '--fade-delay': `${delay}ms` }}
+      data-inview={inView ? 'true' : 'false'}
+      className={[
+        'group transition-[opacity,transform] duration-700 ease-[cubic-bezier(.2,.9,.2,1)] will-change-[opacity,transform] motion-reduce:transition-none motion-reduce:transform-none motion-reduce:opacity-100',
+        direction === 'down' && '-translate-y-[22px]',
+        direction === 'up' && 'translate-y-[22px]',
+        direction === 'soft' && 'translate-y-[8px] scale-[0.98]',
+        inView ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0',
+        className,
+      ]
+        .filter(Boolean)
+        .join(' ')}
+      style={{ transitionDelay: `${delay}ms` }}
     >
       {children}
     </div>

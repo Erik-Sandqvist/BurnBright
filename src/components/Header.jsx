@@ -7,12 +7,10 @@ function Header() {
       <div className="mx-auto flex w-full items-center justify-between gap-4 max-md:flex-col max-md:items-start">
         <div className="grid gap-1" aria-label="Burn Bright">
           <span
-            className="burning-logo text-[clamp(2.4rem,5vw,1.8rem)] leading-none tracking-[0.04em] text-[#ec2227] ml-56 drop-shadow-[0_0_28px_rgba(236,34,39,0.35)]"
-            style={{ fontFamily: '"above-the-sky-condensed", sans-serif', fontWeight: 400, fontStyle: 'normal' }}
+            className="ml-56 text-[clamp(2.4rem,5vw,1.8rem)] leading-none tracking-[0.04em] text-[#ec2227] drop-shadow-[0_0_28px_rgba(236,34,39,0.35)] antialiased [text-shadow:0_1px_0_rgba(0,0,0,0.45)]"
+            style={{ fontFamily: '"above-the-sky-condensed","Adore You","Geist Variable",sans-serif', fontWeight: 400, fontStyle: 'normal' }}
           >
-            <span className="burning-logo__text">Burn Bright</span>
-            <span className="burning-logo__flames" aria-hidden="true" />
-            <span className="burning-logo__sparks" aria-hidden="true" />
+            Burn Bright
           </span>
         </div>
 

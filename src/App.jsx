@@ -1,6 +1,7 @@
 import Header from './components/Header'
 import DarkVeil from './components/DarkVeil'
 import Hero from './components/Hero'
+import FoldIn from './components/FoldIn'
 import ProductsSection from './components/ProductsSection'
 
 const rituals = [
@@ -12,7 +13,7 @@ const rituals = [
 
 function App() {
   return (
-    <div className="relative min-h-screen">
+    <div className="relative min-h-screen bg-transparent font-sans text-[#f4e8ea] antialiased selection:bg-[rgba(236,34,39,0.35)] selection:text-[#fff1f2]">
       <div
         className="pointer-events-none fixed inset-0 z-0"
         style={{ width: '100vw', height: '100vh' }}
@@ -30,8 +31,17 @@ function App() {
 
       <div className="relative z-10 min-h-screen">
         <Header />
-        <main className="relative px-4 pb-10 pt-4 text-[#f4e8ea] sm:px-6 lg:px-8 w-full">
-   <Hero />
+        <main className="relative w-full px-4 pb-10 pt-4 sm:px-6 lg:px-8">
+        <Hero />
+        <section className="relative left-1/2 right-1/2 mx-[-50vw] w-screen">
+          <FoldIn>
+            <img
+              className="block h-screen w-screen object-cover"
+              src="/img/redgirl.png"
+              alt="Red girl portrait"
+            />
+          </FoldIn>
+        </section>
         <section className="mx-auto w-3/5 rounded-[28px]">
           <section className="mx-auto rounded-[28px] overflow-hidden">
             <video
@@ -74,12 +84,12 @@ function App() {
           </p>
         </section> */}
          <img
-            className="mx-0-auto mx-auto w-1/2 rounded-[28px] pointer-events-none opacity-50"
+            className="mx-0-auto mx-auto block w-1/2 rounded-[28px] opacity-50 pointer-events-none"
             src="/img/logo.svg"
             alt=""
           />
            <img
-            className=" right-0 top-0 mx-auto h-full w-full object-cover rounded-[28px] pointer-events-none"
+            className=" right-0 top-0 mx-auto block h-full w-full object-cover rounded-[28px] pointer-events-none"
             src="/img/outside.jpg"
             alt=""
           />
