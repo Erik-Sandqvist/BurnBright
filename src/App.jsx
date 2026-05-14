@@ -31,7 +31,7 @@ function App() {
       <div className="relative z-10 min-h-screen">
         <Header />
         <main className="relative px-4 pb-10 pt-4 text-[#f4e8ea] sm:px-6 lg:px-8 w-full">
-  
+   <Hero />
         <section className="mx-auto w-3/5 rounded-[28px]">
           <section className="mx-auto rounded-[28px] overflow-hidden">
             <video
@@ -44,7 +44,7 @@ function App() {
               Your browser does not support the video tag.
             </video>
           </section>
-          <Hero />
+         
 
           {/* <div className="mt-8 flex flex-wrap gap-3" aria-label="Brand rituals">
             {rituals.map((ritual) => (
