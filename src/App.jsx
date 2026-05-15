@@ -33,6 +33,7 @@ function App() {
         <Header />
         <main className="relative w-full">
         <Hero />
+         <ProductsSection />
         <section className="relative left-1/2 right-1/2 mx-[-50vw] w-screen">
           <FoldIn>
             <img
@@ -69,7 +70,7 @@ function App() {
         </section>
        
 
-        <ProductsSection />
+       
 
         {/* <section className="mx-auto grid w-4/5 gap-5 pb-5 pt-4 lg:grid-cols-[1fr_0.8fr] lg:items-end">
           <div>
