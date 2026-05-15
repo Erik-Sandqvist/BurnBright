@@ -10,14 +10,40 @@ export default function Hero() {
   const title = 'Burn Bright'
   const chars = splitChars(title)
   const [loaded, setLoaded] = useState(false)
+  const [tilt, setTilt] = useState({ x: 0, y: 0 })
 
   useEffect(() => {
     setLoaded(true)
   }, [])
 
+  const handleMouseMove = (event) => {
+    const rect = event.currentTarget.getBoundingClientRect()
+    const x = (event.clientX - rect.left) / rect.width - 0.5
+    const y = (event.clientY - rect.top) / rect.height - 0.5
+    setTilt({ x, y })
+  }
+
+  const handleMouseLeave = () => {
+    setTilt({ x: 0, y: 0 })
+  }
+
   return (
-    <section className="relative isolate flex min-h-[calc(20vh-84px)] items-center justify-center bg-transparent px-5 py-12">
-      <div className="mx-auto w-full max-w-[1200px] text-center">
+    <section
+      className="relative isolate flex min-h-screen items-center justify-center bg-transparent"
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+    >
+      <img
+        className="absolute inset-0 block h-screen w-screen object-cover transition-transform duration-200 ease-out will-change-transform motion-reduce:transform-none"
+        src="/img/redgirl.png"
+        alt="Red girl portrait"
+        style={{
+          transform: `perspective(1200px) rotateX(${(-tilt.y * 6).toFixed(2)}deg) rotateY(${(
+            tilt.x * 6
+          ).toFixed(2)}deg) scale(1.02)`,
+        }}
+      />
+      <div className="relative z-10 mx-auto w-full max-w-[1200px] text-center">
         <FadeIn direction="down" delay={0}>
           <img
             src="/img/logo.svg"

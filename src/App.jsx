@@ -31,7 +31,7 @@ function App() {
 
       <div className="relative z-10 min-h-screen">
         <Header />
-        <main className="relative w-full px-4 pb-10 pt-4 sm:px-6 lg:px-8">
+        <main className="relative w-full">
         <Hero />
         <section className="relative left-1/2 right-1/2 mx-[-50vw] w-screen">
           <FoldIn>
