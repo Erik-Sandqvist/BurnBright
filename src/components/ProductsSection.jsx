@@ -1,5 +1,6 @@
 import FadeIn from './FadeIn'
 import TiltCard from './TiltCard'
+import { assetUrl } from '../lib/utils'
 
 const fallbackProducts = [
   {
@@ -7,21 +8,21 @@ const fallbackProducts = [
     name: 'Burn Mark Hoodie',
     price: '1290 SEK',
     description: 'Heavyweight hoodie with a sharp, editorial silhouette and a warm red wash.',
-    imageUrl: '/img/blue-hoodie.png',
+    imageUrl: assetUrl('img/blue-hoodie.png'),
   },
   {
     id: 'bb-fallback-2',
     name: 'Ashline Tee',
     price: '590 SEK',
     description: 'Clean-cut tee with a soft feel, built for layered after-dark looks.',
-    imageUrl: '/img/mock-black.jpg',
+    imageUrl: assetUrl('img/mock-black.jpg'),
   },
   {
     id: 'bb-fallback-3',
     name: 'Ember Cap',
     price: '390 SEK',
     description: 'Minimal cap with a low-profile fit and a Burn Bright finish.',
-    imageUrl: '/img/mock.jpg',
+    imageUrl: assetUrl('img/mock.jpg'),
   },
 ]
 

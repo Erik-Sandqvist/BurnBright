@@ -1,6 +1,7 @@
 
 import { useEffect, useState } from 'react'
 import FadeIn from './FadeIn'
+import { assetUrl } from '../lib/utils'
 
 function splitChars(text) {
   return text.split('').map((ch, i) => ({ ch, i }))
@@ -35,7 +36,7 @@ export default function Hero() {
     >
       <img
         className="absolute inset-0 block h-screen w-screen object-cover transition-transform duration-200 ease-out will-change-transform motion-reduce:transform-none"
-        src="/img/redgirl.png"
+        src={assetUrl('img/redgirl.png')}
         alt="Red girl portrait"
         style={{
           transform: `perspective(1200px) rotateX(${(-tilt.y * 6).toFixed(2)}deg) rotateY(${(
@@ -46,7 +47,7 @@ export default function Hero() {
       <div className="relative z-10 mx-auto w-full max-w-[1200px] text-center">
         <FadeIn direction="down" delay={0}>
           <img
-            src="/img/logo.svg"
+            src={assetUrl('img/logo.svg')}
             alt="Burn Bright logo"
             className="mx-auto mb-6 block h-auto w-[clamp(300px,20vw,260px)] opacity-[0.98]"
           />

@@ -7,6 +7,7 @@ import ProductsSection from './components/ProductsSection'
 import ScrollProgress from './components/ScrollProgress'
 import Marquee from './components/Marquee'
 import ParallaxImg from './components/ParallaxImg'
+import { assetUrl } from './lib/utils'
 
 function App() {
   return (
@@ -61,7 +62,7 @@ function App() {
             <FoldIn>
               <img
                 className="block h-screen w-screen object-cover"
-                src="/img/redgirl.png"
+                src={assetUrl('img/redgirl.png')}
                 alt="Red girl portrait"
               />
             </FoldIn>
@@ -72,7 +73,7 @@ function App() {
             <FoldIn>
               <div className="overflow-hidden rounded-[28px] shadow-[0_40px_90px_rgba(0,0,0,0.7),0_0_0_1px_rgba(255,255,255,0.07)]">
                 <video className="block w-full" muted autoPlay loop playsInline>
-                  <source src="/Main.mp4" type="video/mp4" />
+                  <source src={assetUrl('Main.mp4')} type="video/mp4" />
                 </video>
               </div>
             </FoldIn>
@@ -83,7 +84,7 @@ function App() {
             <FadeIn direction="soft">
               <img
                 className="pointer-events-none mx-auto block w-1/2 opacity-30"
-                src="/img/logo.svg"
+                src={assetUrl('img/logo.svg')}
                 alt=""
                 style={{ animation: 'float 7s ease-in-out infinite' }}
               />
