@@ -93,7 +93,7 @@ function App() {
 
           {/* Outside image with parallax */}
           <ParallaxImg
-            src="/img/outside.jpg"
+            src={assetUrl('img/outside.jpg')}
             alt=""
             className="block h-[75vh] w-full object-cover"
             speed={0.28}
@@ -104,7 +104,7 @@ function App() {
             <FadeIn direction="up">
               <div className="overflow-hidden rounded-[28px] shadow-[0_24px_60px_rgba(0,0,0,0.55)]">
                 <video className="block w-full" muted autoPlay loop playsInline>
-                  <source src="/Main.mp4" type="video/mp4" />
+                  <source src={assetUrl('Main.mp4')} type="video/mp4" />
                 </video>
               </div>
             </FadeIn>
