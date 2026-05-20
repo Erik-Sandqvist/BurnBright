@@ -1,6 +1,7 @@
 
 import { useEffect, useState } from 'react'
 import FadeIn from './FadeIn'
+import { assetUrl } from '../lib/utils'
 
 function splitChars(text) {
   return text.split('').map((ch, i) => ({ ch, i }))

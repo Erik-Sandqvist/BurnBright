@@ -1,5 +1,6 @@
 import FadeIn from './FadeIn'
 import TiltCard from './TiltCard'
+import { assetUrl } from '../lib/utils'
 
 const fallbackProducts = [
   {
