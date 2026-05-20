@@ -4,6 +4,7 @@ import FadeIn from '../components/FadeIn'
 import ProductsSection from '../components/ProductsSection'
 import Marquee from '../components/Marquee'
 import ParallaxImg from '../components/ParallaxImg'
+import { assetUrl } from '../lib/utils'
 
 export default function HomePage() {
   return (
@@ -35,7 +36,7 @@ export default function HomePage() {
         <FoldIn>
           <img
             className="block h-screen w-screen object-cover"
-            src="img/redgirl.png"
+            src={assetUrl('img/redgirl.png')}
             alt="Red girl portrait"
           />
         </FoldIn>
@@ -46,7 +47,7 @@ export default function HomePage() {
         <FoldIn>
           <div className="overflow-hidden rounded-[28px] shadow-[0_40px_90px_rgba(0,0,0,0.7),0_0_0_1px_rgba(255,255,255,0.07)]">
             <video className="block w-full" muted autoPlay loop playsInline>
-              <source src="Main.mp4" type="video/mp4" />
+              <source src={assetUrl('Main.mp4')} type="video/mp4" />
             </video>
           </div>
         </FoldIn>
@@ -57,7 +58,7 @@ export default function HomePage() {
         <FadeIn direction="soft">
           <img
             className="pointer-events-none mx-auto block w-1/2 opacity-30"
-            src="img/logo.svg"
+            src={assetUrl('img/logo.svg')}
             alt=""
             style={{ animation: 'float 7s ease-in-out infinite' }}
           />
@@ -66,7 +67,7 @@ export default function HomePage() {
 
       {/* Outside image with parallax */}
       <ParallaxImg
-        src="img/outside.jpg"
+        src={assetUrl('img/outside.jpg')}
         alt=""
         className="block h-[75vh] w-full object-cover"
         speed={0.28}
@@ -77,7 +78,7 @@ export default function HomePage() {
         <FadeIn direction="up">
           <div className="overflow-hidden rounded-[28px] shadow-[0_24px_60px_rgba(0,0,0,0.55)]">
             <video className="block w-full" muted autoPlay loop playsInline>
-              <source src="Main.mp4" type="video/mp4" />
+              <source src={assetUrl('Main.mp4')} type="video/mp4" />
             </video>
           </div>
         </FadeIn>

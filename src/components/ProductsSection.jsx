@@ -52,7 +52,7 @@ export default function ProductsSection() {
                 <article className="h-full rounded-[20px] border border-white/10 bg-[linear-gradient(160deg,rgba(255,255,255,0.04),rgba(0,0,0,0.35))] p-6 shadow-[0_18px_50px_rgba(0,0,0,0.55)] backdrop-blur-sm">
                   {product.imageUrl ? (
                     <img
-                      src={product.imageUrl}
+                      src={assetUrl(product.imageUrl)}
                       alt={product.name}
                       className="mb-5 block h-52 w-full rounded-xl object-cover"
                     />

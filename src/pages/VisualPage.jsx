@@ -3,6 +3,7 @@ import FoldIn from '../components/FoldIn'
 import Marquee from '../components/Marquee'
 import ParallaxImg from '../components/ParallaxImg'
 import TiltCard from '../components/TiltCard'
+import { assetUrl } from '../lib/utils'
 
 const palette = [
   { hex: '#ec2227', name: 'The Red', label: 'EC2227', desc: 'Primary accent. The flare.' },
@@ -41,7 +42,7 @@ export default function VisualPage() {
       {/* Hero */}
       <section className="relative flex min-h-screen items-end overflow-hidden pb-16">
         <ParallaxImg
-          src="img/outside.jpg"
+          src={assetUrl('img/outside.jpg')}
           alt="Burn Bright visual"
           className="absolute inset-0 h-full w-full object-cover"
           speed={0.18}
@@ -103,7 +104,7 @@ export default function VisualPage() {
         <FoldIn>
           <img
             className="block h-screen w-screen object-cover"
-            src="img/redgirl.png"
+            src={assetUrl('img/redgirl.png')}
             alt="Burn Bright editorial"
           />
         </FoldIn>
@@ -161,7 +162,7 @@ export default function VisualPage() {
         <FoldIn>
           <div className="overflow-hidden rounded-[28px] shadow-[0_40px_90px_rgba(0,0,0,0.7),0_0_0_1px_rgba(255,255,255,0.07)]">
             <video className="block w-full" muted autoPlay loop playsInline>
-              <source src="Main.mp4" type="video/mp4" />
+              <source src={assetUrl('Main.mp4')} type="video/mp4" />
             </video>
           </div>
         </FoldIn>
