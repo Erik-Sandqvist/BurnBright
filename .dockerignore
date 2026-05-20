@@ -1,0 +1,36 @@
+# Git
+.git
+.gitignore
+.gitattributes
+
+# Node
+node_modules
+npm-debug.log
+package-lock.json
+dist
+
+# .NET
+bin
+obj
+.vs
+.vscode
+*.user
+*.suo
+
+# OS
+.DS_Store
+Thumbs.db
+.env
+.env.local
+
+# IDE
+.idea
+*.swp
+*.swo
+
+# Misc
+.dockerignore
+Dockerfile
+docker-compose.yml
+README.md
+.github
