@@ -4,7 +4,7 @@ import FadeIn from '../components/FadeIn'
 import ProductsSection from '../components/ProductsSection'
 import Marquee from '../components/Marquee'
 import ParallaxImg from '../components/ParallaxImg'
-import { assetUrl } from '../lib/utils'
+import { assetUrl, displayFontStyle } from '../lib/utils'
 
 export default function HomePage() {
   return (
@@ -19,7 +19,7 @@ export default function HomePage() {
       {/* Statement section */}
       <section className="overflow-hidden py-28 text-center">
         <FadeIn direction="up">
-          <h2 className="text-[clamp(3rem,11vw,7.5rem)] font-bold leading-[0.88] tracking-[-0.05em] text-[#f5ecec]">
+          <h2 className="text-[clamp(3rem,11vw,7.5rem)] font-bold leading-[0.88] tracking-[-0.05em] text-[#f5ecec]" style={displayFontStyle}>
             After dark.<br />
             <span className="text-[#ec2227] [text-shadow:0_0_60px_rgba(236,34,39,0.4)]">On fire.</span>
           </h2>

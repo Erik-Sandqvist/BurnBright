@@ -3,7 +3,7 @@ import FoldIn from '../components/FoldIn'
 import Marquee from '../components/Marquee'
 import ParallaxImg from '../components/ParallaxImg'
 import TiltCard from '../components/TiltCard'
-import { assetUrl } from '../lib/utils'
+import { assetUrl, displayFontStyle } from '../lib/utils'
 
 const palette = [
   { hex: '#ec2227', name: 'The Red', label: 'EC2227', desc: 'Primary accent. The flare.' },
@@ -40,14 +40,21 @@ export default function VisualPage() {
     <main className="relative w-full" id="visual">
 
       {/* Hero */}
-      <section className="relative flex min-h-screen items-end overflow-hidden pb-16">
+      <section className="relative flex min-h-screen items-start overflow-hidden pt-16">
         <ParallaxImg
-          src={assetUrl('img/outside.jpg')}
+          src={assetUrl('img/sky.jpeg')}
           alt="Burn Bright visual"
           className="absolute inset-0 h-full w-full object-cover"
           speed={0.18}
         />
         <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(6,6,6,0.92)_0%,rgba(6,6,6,0.3)_50%,transparent_100%)]" />
+        <img
+          src={assetUrl('img/flower-red.svg')}
+          alt=""
+          aria-hidden="true"
+          className="pointer-events-none absolute right-4 top-20 z-10 w-20 opacity-55 mix-blend-screen blur-[0.2px] drop-shadow-[0_0_26px_rgba(236,34,39,0.32)] sm:right-8 sm:top-24 sm:w-28 lg:right-14 lg:top-28 lg:w-36"
+          style={{ animation: 'float 8s ease-in-out infinite' }}
+        />
         <div className="relative z-10 mx-auto w-4/5 pb-4">
           <FadeIn direction="up" delay={0}>
             <p className="mb-4 text-[0.68rem] uppercase tracking-[0.3em] text-white/40">
@@ -57,6 +64,7 @@ export default function VisualPage() {
           <FadeIn direction="up" delay={80}>
             <h1
               className="text-[clamp(4rem,13vw,10rem)] font-bold leading-[0.85] tracking-[-0.04em] text-[#f5ecec]"
+              style={displayFontStyle}
             >
               Behind<br />
               <span className="text-[#ec2227] [text-shadow:0_0_80px_rgba(236,34,39,0.5)]">the Burn.</span>
@@ -84,7 +92,7 @@ export default function VisualPage() {
               <FadeIn direction={i % 2 === 0 ? 'left' : 'right'} className={i % 2 === 1 ? 'lg:[direction:ltr]' : ''}>
                 <div>
                   <span className="text-[0.62rem] uppercase tracking-[0.3em] text-[#ec2227]/60">{ch.num}</span>
-                  <h2 className="mt-2 text-[clamp(2.5rem,6vw,5rem)] font-bold leading-[0.9] tracking-[-0.04em] text-[#f5ecec]">
+                  <h2 className="mt-2 text-[clamp(2.5rem,6vw,5rem)] font-bold leading-[0.9] tracking-[-0.04em] text-[#f5ecec]" style={displayFontStyle}>
                     {ch.title}
                   </h2>
                 </div>
@@ -114,7 +122,7 @@ export default function VisualPage() {
       <section className="mx-auto w-4/5 py-24">
         <FadeIn direction="up">
           <p className="mb-2 text-[0.68rem] uppercase tracking-[0.3em] text-white/35">Color story</p>
-          <h2 className="mb-12 text-4xl font-bold tracking-[-0.04em] text-[#f5ecec] sm:text-6xl">
+          <h2 className="mb-12 text-4xl font-bold tracking-[-0.04em] text-[#f5ecec] sm:text-6xl" style={displayFontStyle}>
             Four colors.<br />No exceptions.
           </h2>
         </FadeIn>
@@ -145,7 +153,7 @@ export default function VisualPage() {
           <p className="mb-6 text-[0.68rem] uppercase tracking-[0.3em] text-white/30">Manifesto</p>
         </FadeIn>
         <FadeIn direction="up" delay={80}>
-          <blockquote className="mx-auto max-w-[16ch] text-[clamp(2.8rem,9vw,7rem)] font-bold leading-[0.88] tracking-[-0.04em] text-[#f5ecec]">
+          <blockquote className="mx-auto max-w-[16ch] text-[clamp(2.8rem,9vw,7rem)] font-bold leading-[0.88] tracking-[-0.04em] text-[#f5ecec]" style={displayFontStyle}>
             "Burn bright or not at all."
           </blockquote>
         </FadeIn>

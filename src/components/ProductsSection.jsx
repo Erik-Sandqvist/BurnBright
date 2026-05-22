@@ -1,6 +1,6 @@
 import FadeIn from './FadeIn'
 import TiltCard from './TiltCard'
-import { assetUrl } from '../lib/utils'
+import { assetUrl, displayFontStyle } from '../lib/utils'
 
 const fallbackProducts = [
   {
@@ -36,7 +36,7 @@ export default function ProductsSection() {
           <p className="text-[0.68rem] uppercase tracking-[0.25em] text-white/40">Collection</p>
         </FadeIn>
         <FadeIn direction="left" delay={60}>
-          <h2 className="text-4xl font-bold tracking-[-0.04em] text-[#f5ecec] sm:text-6xl">Products</h2>
+          <h2 className="text-4xl font-bold tracking-[-0.04em] text-[#f5ecec] sm:text-6xl" style={displayFontStyle}>Products</h2>
         </FadeIn>
       </div>
 
@@ -57,7 +57,7 @@ export default function ProductsSection() {
                       className="mb-5 block h-52 w-full rounded-xl object-cover"
                     />
                   ) : null}
-                  <h3 className="mt-1 text-2xl font-bold tracking-[-0.04em] text-white">{product.name}</h3>
+                  <h3 className="mt-1 text-2xl font-bold tracking-[-0.04em] text-white" style={displayFontStyle}>{product.name}</h3>
                   {product.price ? (
                     <p className="mt-2 text-[0.75rem] uppercase tracking-[0.22em] text-[#ec2227]">{product.price}</p>
                   ) : null}
