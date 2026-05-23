@@ -1,5 +1,6 @@
 import FadeIn from '../components/FadeIn'
 import FoldIn from '../components/FoldIn'
+import LoveSurvivesSection from '../components/LoveSurvivesSection'
 import Marquee from '../components/Marquee'
 import ParallaxImg from '../components/ParallaxImg'
 import TiltCard from '../components/TiltCard'
@@ -157,13 +158,10 @@ export default function VisualPage() {
             "Burn bright or not at all."
           </blockquote>
         </FadeIn>
-        <FadeIn direction="soft" delay={200}>
-          <p className="mx-auto mt-10 max-w-[40ch] text-base leading-relaxed text-white/45">
-            We do not make clothes for every occasion. We make a single statement, repeated
-            across a limited run, until there is nothing left to say.
-          </p>
-        </FadeIn>
       </section>
+
+      {/* Love Survives scrollytelling */}
+      <LoveSurvivesSection />
 
       {/* Video */}
       <section className="mx-auto my-8 w-3/5">

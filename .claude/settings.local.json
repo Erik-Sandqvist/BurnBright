@@ -2,7 +2,14 @@
   "permissions": {
     "allow": [
       "Bash(npm install *)",
-      "Bash(npm run *)"
+      "Bash(npm run *)",
+      "WebFetch(domain:api.anthropic.com)",
+      "Bash(curl -s \"https://api.anthropic.com/v1/design/h/f4N1Ukv_YLu_DmjK1Fs55Q?open_file=README.md\" -o \"C:\\\\Users\\\\Administrator\\\\AppData\\\\Local\\\\Temp\\\\design_readme.txt\" --max-filesize 5000000)",
+      "Bash(Get-Content \"C:\\\\Users\\\\Administrator\\\\AppData\\\\Local\\\\Temp\\\\design_readme.txt\" -First 100)",
+      "Bash(curl -s \"https://api.anthropic.com/v1/design/h/f4N1Ukv_YLu_DmjK1Fs55Q?open_file=videos%2Flove-survives-scroll.html\" --range 0-500000)",
+      "PowerShell($response = Invoke-WebRequest -Uri \"https://api.anthropic.com/v1/design/h/f4N1Ukv_YLu_DmjK1Fs55Q?open_file=videos%2Flove-survives-scroll.html\" -MaximumRedirection 5 -UseBasicParsing; $content = $response.Content; $content.Substring\\(0, [Math]::Min\\(30000, $content.Length\\)\\))",
+      "Bash(python3)",
+      "Bash(curl -s --compressed \"https://api.anthropic.com/v1/design/h/f4N1Ukv_YLu_DmjK1Fs55Q?open_file=videos%2Flove-survives-scroll.html\")"
     ]
   }
 }
