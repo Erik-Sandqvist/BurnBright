@@ -8,3 +8,9 @@ export function cn(...inputs) {
 export function assetUrl(path) {
   return `${import.meta.env.BASE_URL}${path.replace(/^\//, '')}`
 }
+
+export const displayFontStyle = {
+  fontFamily: '"above-the-sky-condensed","Adore You","Geist Variable",sans-serif',
+  fontWeight: 400,
+  fontStyle: 'normal',
+}
