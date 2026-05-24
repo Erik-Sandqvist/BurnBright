@@ -10,10 +10,7 @@ function App() {
     <div className="relative min-h-screen bg-transparent font-sans text-[#f4e8ea] antialiased selection:bg-[rgba(236,34,39,0.35)] selection:text-[#fff1f2]">
       <ScrollProgress />
 
-      <div
-        className="pointer-events-none fixed inset-0 z-0"
-        style={{ width: '100vw', height: '100vh' }}
-      >
+      <div className="pointer-events-none fixed inset-0 z-0">
         <DarkVeil
           hueShift={600}
           noiseIntensity={0}
