@@ -64,7 +64,7 @@ export default function VisualPage() {
           className="absolute inset-0 h-full w-full object-cover"
           speed={0.18}
         />
-        <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(6,6,6,0.92)_0%,rgba(6,6,6,0.3)_50%,transparent_100%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(6,6,6,0.65)_0%,rgba(6,6,6,0.15)_50%,transparent_100%)]" />
         <img
           src={assetUrl('img/flower-red.svg')}
           alt=""
@@ -115,7 +115,7 @@ export default function VisualPage() {
                 </div>
               </FadeIn>
               <FadeIn direction={i % 2 === 0 ? 'right' : 'left'} delay={100} className={i % 2 === 1 ? 'lg:[direction:ltr]' : ''}>
-                <p className="text-lg leading-8 text-white/55 lg:pt-6">
+                <p className="text-lg leading-8 text-white/70 lg:pt-6">
                   {ch.body}
                 </p>
               </FadeIn>
@@ -138,12 +138,12 @@ export default function VisualPage() {
       {/* Palette section */}
       <section className="mx-auto w-4/5 py-24">
         <FadeIn direction="up">
-          <p className="mb-2 text-[0.68rem] uppercase tracking-[0.3em] text-white/35">Color story</p>
+          <p className="mb-2 text-[0.68rem] uppercase tracking-[0.3em] text-white/50">Color story</p>
           <h2 className="mb-16 text-4xl font-bold tracking-[-0.04em] text-[#f5ecec] sm:text-6xl" style={displayFontStyle}>
             Five colors.<br />No exceptions.
           </h2>
         </FadeIn>
-        <div className="divide-y divide-white/8 border-t border-white/8">
+        <div className="divide-y divide-white/15 border-t border-white/15">
           {palette.map((color, i) => {
             return (
               <FadeIn key={color.hex} direction="up" delay={i * 70}>
@@ -169,7 +169,7 @@ export default function VisualPage() {
                     >
                       {color.name}
                     </p>
-                    <p className="mt-1 hidden text-sm text-white/35 sm:block">
+                    <p className="mt-1 hidden text-sm text-white/50 sm:block">
                       {color.desc}
                     </p>
                   </div>
@@ -193,7 +193,7 @@ export default function VisualPage() {
       {/* Editorial photo grid */}
       <section className="mx-auto w-4/5 py-24">
         <FadeIn direction="up">
-          <p className="mb-2 text-[0.68rem] uppercase tracking-[0.3em] text-white/35">Editorial</p>
+          <p className="mb-2 text-[0.68rem] uppercase tracking-[0.3em] text-white/50">Editorial</p>
           <h2 className="mb-12 text-4xl font-bold tracking-[-0.04em] text-[#f5ecec] sm:text-6xl" style={displayFontStyle}>
             The Object.<br />The Mark. The City.
           </h2>
@@ -208,8 +208,8 @@ export default function VisualPage() {
                 className="block h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
                 style={{ minHeight: '420px' }}
               />
-              <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent" />
-              <p className="absolute bottom-5 left-6 text-[0.62rem] uppercase tracking-[0.3em] text-white/50">
+              <div className="absolute inset-0 bg-linear-to-t from-black/25 via-transparent to-transparent" />
+              <p className="absolute bottom-5 left-6 text-[0.62rem] uppercase tracking-[0.3em] text-white/70">
                 The Object
               </p>
             </div>
@@ -223,8 +223,8 @@ export default function VisualPage() {
                 className="block h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
                 style={{ minHeight: '200px', maxHeight: '320px' }}
               />
-              <div className="absolute inset-0 bg-linear-to-t from-black/50 via-transparent to-transparent" />
-              <p className="absolute bottom-5 left-6 text-[0.62rem] uppercase tracking-[0.3em] text-white/50">
+              <div className="absolute inset-0 bg-linear-to-t from-black/20 via-transparent to-transparent" />
+              <p className="absolute bottom-5 left-6 text-[0.62rem] uppercase tracking-[0.3em] text-white/70">
                 The Mark
               </p>
             </div>
@@ -238,8 +238,8 @@ export default function VisualPage() {
                 className="block h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
                 style={{ minHeight: '200px', maxHeight: '320px' }}
               />
-              <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent" />
-              <p className="absolute bottom-5 left-6 text-[0.62rem] uppercase tracking-[0.3em] text-white/50">
+              <div className="absolute inset-0 bg-linear-to-t from-black/25 via-transparent to-transparent" />
+              <p className="absolute bottom-5 left-6 text-[0.62rem] uppercase tracking-[0.3em] text-white/70">
                 The City
               </p>
             </div>
@@ -251,14 +251,14 @@ export default function VisualPage() {
       <PosterSection />
 
       {/* Dome Gallery - Interactive image gallery */}
-      <section className="relative w-full overflow-hidden bg-[#0e120c] py-32">
+      <section className="relative w-full overflow-hidden bg-[#1a1420] py-32">
         <div className="mx-auto mb-12 w-4/5">
           
-            <p className="mb-2 text-[0.68rem] uppercase tracking-[0.3em] text-white/35">Interactive Gallery</p>
+            <p className="mb-2 text-[0.68rem] uppercase tracking-[0.3em] text-white/50">Interactive Gallery</p>
             <h2 className="mb-4 text-4xl font-bold tracking-[-0.04em] text-[#f5ecec] sm:text-6xl" style={displayFontStyle}>
               The Visual<br />Archive
             </h2>
-            <p className="mt-4 max-w-[50ch] text-base leading-relaxed text-white/55">
+            <p className="mt-4 max-w-[50ch] text-base leading-relaxed text-white/70">
               Drag to explore. An immersive view of Burn Bright through every lens.
             </p>
           
@@ -293,7 +293,7 @@ export default function VisualPage() {
 
       {/* Credits */}
       <section className="mx-auto w-4/5 py-20">
-        <div className="grid gap-8 border-t border-white/8 pt-12 sm:grid-cols-3">
+        <div className="grid gap-8 border-t border-white/15 pt-12 sm:grid-cols-3">
           {[
             { label: 'Direction', value: 'Burn Bright Studio' },
             { label: 'Year', value: 'MMXXVI' },
@@ -301,7 +301,7 @@ export default function VisualPage() {
           ].map((item, i) => (
             <FadeIn key={item.label} direction="up" delay={i * 70}>
               <div>
-                <p className="text-[0.62rem] uppercase tracking-[0.28em] text-white/30">{item.label}</p>
+                <p className="text-[0.62rem] uppercase tracking-[0.28em] text-white/45">{item.label}</p>
                 <p className="mt-2 text-lg font-bold tracking-[-0.02em] text-white/80">{item.value}</p>
               </div>
             </FadeIn>
