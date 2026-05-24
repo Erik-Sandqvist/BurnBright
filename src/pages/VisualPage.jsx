@@ -1,10 +1,10 @@
 import FadeIn from '../components/FadeIn'
 import FoldIn from '../components/FoldIn'
-import LoveSurvivesSection from '../components/LoveSurvivesSection'
 import Marquee from '../components/Marquee'
 import ParallaxImg from '../components/ParallaxImg'
 import PosterSection from '../components/PosterSection'
 import DomeGallery from '../components/DomeGallery'
+import LoveScrolly from '../components/LoveScrolly'
 import { assetUrl, displayFontStyle } from '../lib/utils'
 
 const palette = [
@@ -39,17 +39,14 @@ const chapters = [
 ]
 
 const galleryImages = [
-  { src: assetUrl('img/blue-hoodie.png'), alt: 'Blue hoodie' },
   { src: assetUrl('img/mock-black.jpg'), alt: 'Black mock' },
   { src: assetUrl('img/mock.jpg'), alt: 'Mock product' },
   { src: assetUrl('img/nice mock.jpg'), alt: 'Mockup presentation' },
   { src: assetUrl('img/outside.jpg'), alt: 'Outdoor shot' },
   { src: assetUrl('img/poster1.jpg'), alt: 'Poster design' },
-  { src: assetUrl('img/redgirl.png'), alt: 'Red editorial' },
   { src: assetUrl('img/sky.jpeg'), alt: 'Sky backdrop' },
   { src: assetUrl('img/train.jpg'), alt: 'Train advertisement' },
   { src: assetUrl('img/wall.jpg'), alt: 'Wall installation' },
-  { src: assetUrl('img/image_2026524_141016.png'), alt: 'White hoodie' },
 ]
 
 export default function VisualPage() {
@@ -97,6 +94,9 @@ export default function VisualPage() {
 
       {/* Marquee */}
       <Marquee text="ORIGIN · THE RED · THE EDIT · THE MOOD · FOUR COLORS · INTENTIONAL · SATURATED · LIMITED" speed={50} />
+
+      {/* Scrollytelling: night → dawn behind the logo */}
+      <LoveScrolly />
 
       {/* Chapter grid */}
       <section className="mx-auto w-4/5 py-24">
@@ -251,7 +251,7 @@ export default function VisualPage() {
       <PosterSection />
 
       {/* Dome Gallery - Interactive image gallery */}
-      <section className="relative w-full overflow-hidden bg-[#1a1420] py-32">
+      {/* <section className="relative w-full overflow-hidden bg-[#1a1420] py-32">
         <div className="mx-auto mb-12 w-4/5">
           
             <p className="mb-2 text-[0.68rem] uppercase tracking-[0.3em] text-white/50">Interactive Gallery</p>
@@ -275,10 +275,9 @@ export default function VisualPage() {
             grayscale={false}
           />
         </div>
-      </section>
+      </section> */}
 
-      {/* Love Survives scrollytelling */}
-      <LoveSurvivesSection />
+  <LoveScrolly />
 
       {/* Video */}
       <section className="mx-auto my-8 w-3/5">

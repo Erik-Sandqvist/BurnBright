@@ -7,9 +7,11 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Prevent accidental horizontal scrolling caused by 100vw and similar */
+/* Prevent accidental horizontal scrolling caused by 100vw and similar.
+   Use `clip` (not `hidden`) so html/body do not become scroll containers —
+   `hidden` would break `position: sticky` for descendants. */
 html, body {
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 @keyframes marquee {
