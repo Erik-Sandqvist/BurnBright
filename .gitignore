@@ -24,3 +24,4 @@ dist-ssr
 *.sw?
 .env
 .env.local
+.claude/worktrees/nice-taussig-ff9761/

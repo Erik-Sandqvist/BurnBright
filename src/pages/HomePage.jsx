@@ -16,20 +16,6 @@ export default function HomePage() {
 
       <ProductsSection />
 
-      {/* Statement section */}
-      <section className="overflow-hidden py-28 text-center">
-        <FadeIn direction="up">
-          <h2 className="text-[clamp(3rem,11vw,7.5rem)] font-bold leading-[0.88] tracking-[-0.05em] text-[#f5ecec]" style={displayFontStyle}>
-            After dark.<br />
-            <span className="text-[#ec2227] [text-shadow:0_0_60px_rgba(236,34,39,0.4)]">On fire.</span>
-          </h2>
-        </FadeIn>
-        <FadeIn direction="soft" delay={130}>
-          <p className="mx-auto mt-8 max-w-[42ch] text-base leading-relaxed text-white/50">
-            Every piece is a limited statement — saturated with intention, built for the night.
-          </p>
-        </FadeIn>
-      </section>
 
       {/* Full-width image with FoldIn reveal */}
       <section className="relative left-1/2 right-1/2 mx-[-50vw] w-screen">
