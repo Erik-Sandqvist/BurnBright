@@ -3,14 +3,16 @@ import FoldIn from '../components/FoldIn'
 import LoveSurvivesSection from '../components/LoveSurvivesSection'
 import Marquee from '../components/Marquee'
 import ParallaxImg from '../components/ParallaxImg'
-import TiltCard from '../components/TiltCard'
+import PosterSection from '../components/PosterSection'
+import DomeGallery from '../components/DomeGallery'
 import { assetUrl, displayFontStyle } from '../lib/utils'
 
 const palette = [
-  { hex: '#ec2227', name: 'The Red', label: 'EC2227', desc: 'Primary accent. The flare.' },
+  { hex: '#ec2227', name: 'The Red',    label: 'EC2227', desc: 'Primary accent. The flare.' },
   { hex: '#6e0e10', name: 'Deep Ember', label: '6E0E10', desc: 'Shadow of the burn.' },
-  { hex: '#0e120c', name: 'Void', label: '0E120C', desc: 'Background. Absolute dark.' },
-  { hex: '#0b1238', name: 'Midnight', label: '0B1238', desc: 'The hour before dawn.' },
+  { hex: '#f68a1f', name: 'Heat',       label: 'F68A1F', desc: 'The glow at the edge.' },
+  { hex: '#020200', name: 'Void',       label: '020200', desc: 'Background. Absolute dark.' },
+  { hex: '#feeadd', name: 'First Light',label: 'FEEADD', desc: 'The hour after dawn.' },
 ]
 
 const chapters = [
@@ -34,6 +36,20 @@ const chapters = [
     title: 'The Mood',
     body: 'Limited. Saturated. Intentional. This is not a brand for all seasons. It is for the specific feeling of walking through a city at 1am with nowhere to be and everywhere to go. The collection is a mood study, not a product line.',
   },
+]
+
+const galleryImages = [
+  { src: assetUrl('img/blue-hoodie.png'), alt: 'Blue hoodie' },
+  { src: assetUrl('img/mock-black.jpg'), alt: 'Black mock' },
+  { src: assetUrl('img/mock.jpg'), alt: 'Mock product' },
+  { src: assetUrl('img/nice mock.jpg'), alt: 'Mockup presentation' },
+  { src: assetUrl('img/outside.jpg'), alt: 'Outdoor shot' },
+  { src: assetUrl('img/poster1.jpg'), alt: 'Poster design' },
+  { src: assetUrl('img/redgirl.png'), alt: 'Red editorial' },
+  { src: assetUrl('img/sky.jpeg'), alt: 'Sky backdrop' },
+  { src: assetUrl('img/train.jpg'), alt: 'Train advertisement' },
+  { src: assetUrl('img/wall.jpg'), alt: 'Wall installation' },
+  { src: assetUrl('img/image_2026524_141016.png'), alt: 'White hoodie' },
 ]
 
 export default function VisualPage() {
@@ -123,41 +139,142 @@ export default function VisualPage() {
       <section className="mx-auto w-4/5 py-24">
         <FadeIn direction="up">
           <p className="mb-2 text-[0.68rem] uppercase tracking-[0.3em] text-white/35">Color story</p>
-          <h2 className="mb-12 text-4xl font-bold tracking-[-0.04em] text-[#f5ecec] sm:text-6xl" style={displayFontStyle}>
-            Four colors.<br />No exceptions.
+          <h2 className="mb-16 text-4xl font-bold tracking-[-0.04em] text-[#f5ecec] sm:text-6xl" style={displayFontStyle}>
+            Five colors.<br />No exceptions.
           </h2>
         </FadeIn>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {palette.map((color, i) => (
-            <FadeIn key={color.hex} direction="up" delay={i * 80}>
-              <TiltCard>
-                <div className="overflow-hidden rounded-[20px] border border-white/8 bg-[rgba(255,255,255,0.02)]">
+        <div className="divide-y divide-white/8 border-t border-white/8">
+          {palette.map((color, i) => {
+            return (
+              <FadeIn key={color.hex} direction="up" delay={i * 70}>
+                <div className="group flex items-center gap-8 py-6 transition-all duration-500 hover:gap-10 sm:gap-12 sm:py-8">
+                  {/* Swatch */}
                   <div
-                    className="h-40 w-full"
+                    className="h-16 w-24 shrink-0 rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.55)] transition-all duration-500 group-hover:scale-105 sm:h-20 sm:w-32"
                     style={{ backgroundColor: color.hex }}
                   />
-                  <div className="p-5">
-                    <p className="text-[0.62rem] uppercase tracking-[0.28em] text-white/35">{color.label}</p>
-                    <p className="mt-1 text-lg font-bold tracking-[-0.02em] text-white">{color.name}</p>
-                    <p className="mt-2 text-sm text-white/45">{color.desc}</p>
+                  {/* Hex */}
+                  <p
+                    className="w-[9ch] shrink-0 font-mono text-2xl font-light tracking-tight text-white/60 transition-colors duration-300 group-hover:text-white/90 sm:text-4xl"
+                  >
+                    #{color.label}
+                  </p>
+                  {/* Divider line */}
+                  <div className="hidden h-px flex-1 bg-white/10 sm:block" />
+                  {/* Name + desc */}
+                  <div className="flex flex-col items-end text-right">
+                    <p
+                      className="text-xl font-bold tracking-[-0.03em] text-[#f5ecec] sm:text-3xl"
+                      style={displayFontStyle}
+                    >
+                      {color.name}
+                    </p>
+                    <p className="mt-1 hidden text-sm text-white/35 sm:block">
+                      {color.desc}
+                    </p>
                   </div>
                 </div>
-              </TiltCard>
-            </FadeIn>
-          ))}
+              </FadeIn>
+            )
+          })}
         </div>
       </section>
 
-      {/* Large manifesto quote */}
-      <section className="overflow-hidden py-28 text-center">
+      <section className="relative left-1/2 right-1/2 mx-[-50vw] w-screen">
+        <FoldIn>
+          <img
+            className="block h-screen w-screen object-cover"
+            src={assetUrl('img/guty.jpg')}
+            alt="Burn Bright editorial"
+          />
+        </FoldIn>
+      </section>
+
+      {/* Editorial photo grid */}
+      <section className="mx-auto w-4/5 py-24">
         <FadeIn direction="up">
-          <p className="mb-6 text-[0.68rem] uppercase tracking-[0.3em] text-white/30">Manifesto</p>
+          <p className="mb-2 text-[0.68rem] uppercase tracking-[0.3em] text-white/35">Editorial</p>
+          <h2 className="mb-12 text-4xl font-bold tracking-[-0.04em] text-[#f5ecec] sm:text-6xl" style={displayFontStyle}>
+            The Object.<br />The Mark. The City.
+          </h2>
         </FadeIn>
-        <FadeIn direction="up" delay={80}>
-          <blockquote className="mx-auto max-w-[16ch] text-[clamp(2.8rem,9vw,7rem)] font-bold leading-[0.88] tracking-[-0.04em] text-[#f5ecec]" style={displayFontStyle}>
-            "Burn bright or not at all."
-          </blockquote>
-        </FadeIn>
+        <div className="grid gap-4 lg:grid-cols-[1.6fr_1fr] lg:grid-rows-2">
+          {/* Large product hero — spans both rows */}
+          <FadeIn direction="left" className="lg:row-span-2">
+            <div className="group relative overflow-hidden rounded-[20px]">
+              <img
+                src={assetUrl('img/nice mock.jpg')}
+                alt="Burn Bright hoodie on stone"
+                className="block h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                style={{ minHeight: '420px' }}
+              />
+              <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent" />
+              <p className="absolute bottom-5 left-6 text-[0.62rem] uppercase tracking-[0.3em] text-white/50">
+                The Object
+              </p>
+            </div>
+          </FadeIn>
+          {/* Wall heart */}
+          <FadeIn direction="right" delay={80}>
+            <div className="group relative overflow-hidden rounded-[20px]">
+              <img
+                src={assetUrl('img/wall.jpg')}
+                alt="Red heart on wall"
+                className="block h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                style={{ minHeight: '200px', maxHeight: '320px' }}
+              />
+              <div className="absolute inset-0 bg-linear-to-t from-black/50 via-transparent to-transparent" />
+              <p className="absolute bottom-5 left-6 text-[0.62rem] uppercase tracking-[0.3em] text-white/50">
+                The Mark
+              </p>
+            </div>
+          </FadeIn>
+          {/* Subway ad */}
+          <FadeIn direction="right" delay={160}>
+            <div className="group relative overflow-hidden rounded-[20px]">
+              <img
+                src={assetUrl('img/train.jpg')}
+                alt="Burn Bright subway ad"
+                className="block h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                style={{ minHeight: '200px', maxHeight: '320px' }}
+              />
+              <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent" />
+              <p className="absolute bottom-5 left-6 text-[0.62rem] uppercase tracking-[0.3em] text-white/50">
+                The City
+              </p>
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* Poster breakdown */}
+      <PosterSection />
+
+      {/* Dome Gallery - Interactive image gallery */}
+      <section className="relative w-full overflow-hidden bg-[#0e120c] py-32">
+        <div className="mx-auto mb-12 w-4/5">
+          
+            <p className="mb-2 text-[0.68rem] uppercase tracking-[0.3em] text-white/35">Interactive Gallery</p>
+            <h2 className="mb-4 text-4xl font-bold tracking-[-0.04em] text-[#f5ecec] sm:text-6xl" style={displayFontStyle}>
+              The Visual<br />Archive
+            </h2>
+            <p className="mt-4 max-w-[50ch] text-base leading-relaxed text-white/55">
+              Drag to explore. An immersive view of Burn Bright through every lens.
+            </p>
+          
+        </div>
+        <div className="relative h-[600px] w-full">
+          <DomeGallery
+            images={galleryImages}
+            fit={0.75}
+            minRadius={500}
+            maxVerticalRotationDeg={0}
+            segments={22}
+            dragDampening={3}
+            dragSensitivity={15}
+            grayscale={false}
+          />
+        </div>
       </section>
 
       {/* Love Survives scrollytelling */}
