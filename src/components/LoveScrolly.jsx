@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { assetUrl, headingFontStyle } from '../lib/utils'
+import { assetUrl } from '../lib/utils'
 
 function lerp(a, b, t) {
   return a + (b - a) * t
@@ -276,7 +276,8 @@ export default function LoveScrolly() {
           <h2
             className="text-[clamp(2.5rem,8vw,7rem)] font-bold leading-[0.88] tracking-[-0.04em] text-[#fff5e6]"
             style={{
-              ...headingFontStyle,
+              fontFamily: '"above-the-sky-condensed","Adore You",cursive',
+              fontStyle: 'italic',
               opacity: captionAt,
               transform: `translateY(${(1 - captionAt) * 36}px)`,
               textShadow:
@@ -287,17 +288,7 @@ export default function LoveScrolly() {
             Love burns<br />
             <span className="text-[#ec2227]">brightest at dawn.</span>
           </h2>
-          <p
-            className="mx-auto mt-6 max-w-[44ch] text-sm leading-7 text-white/70 sm:text-base"
-            style={{
-              opacity: subAt,
-              transform: `translateY(${(1 - subAt) * 18}px)`,
-              transition: 'opacity 120ms linear, transform 120ms linear',
-            }}
-          >
-            Through the void and the silence — kärlek överlever natten.
-            What survives the dark is what we wear into the light.
-          </p>
+          
         </div>
       </div>
 

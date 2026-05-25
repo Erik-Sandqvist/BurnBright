@@ -7,13 +7,35 @@ import ParallaxImg from '../components/ParallaxImg'
 import HorizontalScroll from '../components/HorizontalScroll'
 import { assetUrl, displayFontStyle, headingFontStyle } from '../lib/utils'
 
+function BrushStrokeH({ className = '' }) {
+  return (
+    <svg
+      viewBox="0 0 560 14"
+      preserveAspectRatio="none"
+      fill="none"
+      aria-hidden="true"
+      className={`overflow-visible ${className}`}
+    >
+      <defs>
+        <filter id="bbh-home" x="-2%" y="-200%" width="104%" height="500%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.78 0.38" numOctaves="4" seed="3" result="n" />
+          <feDisplacementMap in="SourceGraphic" in2="n" scale="2.8" xChannelSelector="R" yChannelSelector="G" />
+        </filter>
+      </defs>
+      <path d="M2,7 C70,4 160,10 280,6 C400,3 480,9 558,6" stroke="#ec2227" strokeWidth="2.5" strokeLinecap="round" opacity="0.38" filter="url(#bbh-home)" />
+      <path d="M40,9 C130,6 250,11 360,8 C450,5 520,10 545,8" stroke="#ec2227" strokeWidth="1" strokeLinecap="round" opacity="0.18" filter="url(#bbh-home)" />
+      <path d="M2,5 C100,3 230,7 340,5 C450,3 515,7 558,5" stroke="#f68a1f" strokeWidth="0.8" strokeLinecap="round" opacity="0.15" filter="url(#bbh-home)" />
+    </svg>
+  )
+}
+
 const manifesto = [
-  { num: '01', line: 'NOT LOUD.', sub: 'SMOLDERING.' },
-  { num: '02', line: 'ONE RED.', sub: 'NO ALTERNATIVES.' },
-  { num: '03', line: 'THE CITY AT 1AM.', sub: "THAT'S THE ONLY SEASON." },
+  { num: '01', line: 'Let Love Burn', sub: 'Interpret in your way' },
+  { num: '02', line: 'Love is everywhere', sub: 'Embrace it' },
+  { num: '03', line: 'The Love Language', sub: "Spoken by Everyone" },
 ]
 
-const afterDarkLines = ['THE EDIT.', 'AFTER DARK.', 'FOUR COLORS.', 'NO EXCEPTIONS.']
+const afterDarkLines = ['Let', 'Your Love', 'Burn in your way']
 
 function splitChars(text) {
   return text.split('').map((ch, i) => ({ ch, i }))
@@ -132,30 +154,42 @@ export default function HomePage() {
             Manifesto
           </p>
         </FadeIn>
-        <div className="divide-y divide-white/[0.08] border-t border-white/[0.08]">
+        <div className="">
           {manifesto.map((item, i) => (
-            <FadeIn key={item.num} direction={i % 2 === 0 ? 'left' : 'right'} delay={i * 90}>
-              <div className="group grid grid-cols-[4rem_1fr] items-end gap-6 py-12 sm:grid-cols-[7rem_1fr] sm:gap-14 sm:py-16">
-                <span className="pb-1 font-mono text-[0.6rem] uppercase tracking-[0.32em] text-[#ec2227]/45 transition-colors duration-400 group-hover:text-[#ec2227]/75">
-                  {item.num}
-                </span>
-                <div>
-                  <p
-                    className="text-[clamp(2rem,4.8vw,4.2rem)] font-semibold leading-[0.92] tracking-[0.03em] text-[#feeadd] transition-colors duration-400 group-hover:text-white"
-                    style={headingFontStyle}
-                  >
-                    {item.line}
-                  </p>
-                  <p
-                    className="text-[clamp(2rem,4.8vw,4.2rem)] font-semibold leading-[0.92] tracking-[0.03em] text-white/22 transition-colors duration-400 group-hover:text-[#ec2227]/60"
-                    style={headingFontStyle}
-                  >
-                    {item.sub}
-                  </p>
+            <div key={item.num}>
+              <FadeIn direction="soft" delay={i * 60}>
+                <div className="flex py-4 sm:py-5">
+                  <BrushStrokeH className="h-[14px] flex-1" />
                 </div>
-              </div>
-            </FadeIn>
+              </FadeIn>
+              <FadeIn key={item.num} direction={i % 2 === 0 ? 'left' : 'right'} delay={i * 90}>
+                <div className="group grid grid-cols-[4rem_1fr] items-end gap-6 py-12 sm:grid-cols-[7rem_1fr] sm:gap-14 sm:py-16">
+                  <span className="pb-1 font-mono text-[0.6rem] uppercase tracking-[0.32em] text-[#f68a1f]/45 transition-colors duration-400 group-hover:text-[#ec2227]/75">
+                    {item.num}
+                  </span>
+                  <div>
+                    <p
+                      className="text-[clamp(2rem,4.8vw,4.2rem)] font-semibold leading-[0.92] tracking-[0.03em] text-[#feeadd] transition-colors duration-400 group-hover:text-white"
+                      style={headingFontStyle}
+                    >
+                      {item.line}
+                    </p>
+                    <p
+                      className="text-[clamp(2rem,4.8vw,4.2rem)] font-semibold leading-[0.92] tracking-[0.03em] text-[#f68a1f] transition-colors duration-400 group-hover:text-[#ec2227]/60"
+                      style={headingFontStyle}
+                    >
+                      {item.sub}
+                    </p>
+                  </div>
+                </div>
+              </FadeIn>
+            </div>
           ))}
+          <FadeIn direction="soft">
+            <div className="flex py-4 sm:py-5">
+              <BrushStrokeH className="h-[14px] flex-1" />
+            </div>
+          </FadeIn>
         </div>
       </section>
 
@@ -195,7 +229,9 @@ export default function HomePage() {
           ))}
 
           <FadeIn direction="up" delay={540}>
-            <div className="mx-auto mt-14 h-px w-16 bg-[#ec2227]/40" />
+            <div className="mx-auto mt-14 flex w-16">
+              <BrushStrokeH className="h-[14px] flex-1" />
+            </div>
             <p className="mt-6 text-[0.63rem] uppercase tracking-[0.42em] text-white/25">
               A brand for the hour when everything else has gone quiet.
             </p>
@@ -236,6 +272,9 @@ export default function HomePage() {
 
       {/* ─── FOOTER ─── */}
       <footer className="mx-auto w-4/5 pb-6 pt-2" id="contact">
+        <div className="mb-4 flex w-[min(100%,240px)]">
+          <BrushStrokeH className="h-[14px] flex-1" />
+        </div>
         <p className="text-[0.63rem] uppercase tracking-[0.22em] text-white/22">
           Burn Bright / a mood study for a fictional label.
         </p>

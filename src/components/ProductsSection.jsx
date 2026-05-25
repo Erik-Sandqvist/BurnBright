@@ -103,9 +103,9 @@ export default function ProductsSection() {
       </FadeIn>
 
       <div className="flex flex-col gap-20">
-        <CategoryBlock label="Kläder" items={clothing} baseDelay={0} />
+        <CategoryBlock label="Clothing" items={clothing} baseDelay={0} />
         <div className="border-t border-white/[0.08]" />
-        <CategoryBlock label="Accessoarer" items={accessories} baseDelay={60} />
+        <CategoryBlock label="Accessories" items={accessories} baseDelay={60} />
       </div>
     </section>
   )

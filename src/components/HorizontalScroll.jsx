@@ -2,13 +2,14 @@ import { useRef, useEffect, useState } from 'react'
 import { assetUrl, headingFontStyle } from '../lib/utils'
 
 const slides = [
-  { src: 'img/sky.jpeg',       label: 'The Sky',      num: '01' },
+  
   { src: 'img/wall.jpg',       label: 'The Mark',     num: '02' },
   { src: 'img/guty.jpg',       label: 'The Portrait', num: '03' },
   { src: 'img/train.jpg',      label: 'The City',     num: '04' },
-  { src: 'img/poster1.jpg',    label: 'The Poster',   num: '05' },
-  { src: 'img/outside.jpg',    label: 'After Dark',   num: '06' },
+  { src: 'img/tagshirtmock.jpg',    label: 'The Tag',   num: '05' },
+  { src: 'img/cap.jpg',    label: 'Outside',   num: '06' },
   { src: 'img/nice mock.jpg',  label: 'The Object',   num: '07' },
+  { src: 'img/sky.jpeg',       label: 'The Sky',      num: '01' },
 ]
 
 export default function HorizontalScroll() {
