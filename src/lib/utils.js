@@ -14,3 +14,8 @@ export const displayFontStyle = {
   fontWeight: 400,
   fontStyle: 'normal',
 }
+
+export const headingFontStyle = {
+  fontFamily: '"Bahnschrift","Segoe UI","Inter","Geist Variable",sans-serif',
+  fontWeight: 600,
+}

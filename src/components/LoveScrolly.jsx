@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { assetUrl, displayFontStyle } from '../lib/utils'
+import { assetUrl, headingFontStyle } from '../lib/utils'
 
 function lerp(a, b, t) {
   return a + (b - a) * t
@@ -276,7 +276,7 @@ export default function LoveScrolly() {
           <h2
             className="text-[clamp(2.5rem,8vw,7rem)] font-bold leading-[0.88] tracking-[-0.04em] text-[#fff5e6]"
             style={{
-              ...displayFontStyle,
+              ...headingFontStyle,
               opacity: captionAt,
               transform: `translateY(${(1 - captionAt) * 36}px)`,
               textShadow:

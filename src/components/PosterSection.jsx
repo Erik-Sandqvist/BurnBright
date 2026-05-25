@@ -1,5 +1,5 @@
 import FadeIn from './FadeIn'
-import { assetUrl, displayFontStyle } from '../lib/utils'
+import { assetUrl, headingFontStyle } from '../lib/utils'
 
 const annotations = [
   {
@@ -31,7 +31,7 @@ export default function PosterSection() {
         <p className="mb-2 text-[0.68rem] uppercase tracking-[0.3em] text-white/35">Poster No. 1</p>
         <h2
           className="mb-16 text-4xl font-bold tracking-[-0.04em] text-[#f5ecec] sm:text-6xl"
-          style={displayFontStyle}
+          style={headingFontStyle}
         >
           The Declaration.
         </h2>

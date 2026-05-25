@@ -1,11 +1,10 @@
 import FadeIn from '../components/FadeIn'
 import FoldIn from '../components/FoldIn'
 import Marquee from '../components/Marquee'
-import ParallaxImg from '../components/ParallaxImg'
 import PosterSection from '../components/PosterSection'
 import DomeGallery from '../components/DomeGallery'
 import LoveScrolly from '../components/LoveScrolly'
-import { assetUrl, displayFontStyle } from '../lib/utils'
+import { assetUrl, headingFontStyle } from '../lib/utils'
 
 const palette = [
   { hex: '#ec2227', name: 'The Red',    label: 'EC2227', desc: 'Primary accent. The flare.' },
@@ -91,20 +90,24 @@ export default function VisualPage() {
 
       {/* Hero */}
       <section className="relative flex min-h-screen items-start overflow-hidden pt-16">
-        <ParallaxImg
-          src={assetUrl('img/sky.jpeg')}
-          alt="Burn Bright visual"
+        <video
           className="absolute inset-0 h-full w-full object-cover"
-          speed={0.18}
-        />
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster={assetUrl('img/sky.jpeg')}
+        >
+          <source src={assetUrl('happy.mp4')} type="video/mp4" />
+        </video>
         <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(6,6,6,0.65)_0%,rgba(6,6,6,0.15)_50%,transparent_100%)]" />
-        <img
+        {/* <img
           src={assetUrl('img/flower-red.svg')}
           alt=""
           aria-hidden="true"
           className="pointer-events-none absolute right-4 top-20 z-10 w-20 opacity-55 mix-blend-screen blur-[0.2px] drop-shadow-[0_0_26px_rgba(236,34,39,0.32)] sm:right-8 sm:top-24 sm:w-28 lg:right-14 lg:top-28 lg:w-36"
           style={{ animation: 'float 8s ease-in-out infinite' }}
-        />
+        /> */}
         <div className="relative z-10 mx-auto w-4/5 pb-4">
           <FadeIn direction="up" delay={0}>
             <p className="mb-4 text-[0.68rem] uppercase tracking-[0.3em] text-white/40">
@@ -114,7 +117,7 @@ export default function VisualPage() {
           <FadeIn direction="up" delay={80}>
             <h1
               className="text-[clamp(4rem,13vw,10rem)] font-bold leading-[0.85] tracking-[-0.04em] text-[#f5ecec]"
-              style={displayFontStyle}
+              style={headingFontStyle}
             >
               Behind<br />
               <span className="text-[#ec2227] [text-shadow:0_0_80px_rgba(236,34,39,0.5)]">the Burn.</span>
@@ -145,7 +148,7 @@ export default function VisualPage() {
               <FadeIn direction={i % 2 === 0 ? 'left' : 'right'} className={i % 2 === 1 ? 'lg:[direction:ltr]' : ''}>
                 <div>
                   <span className="text-[0.62rem] uppercase tracking-[0.3em] text-[#ec2227]/60">{ch.num}</span>
-                  <h2 className="mt-2 text-[clamp(2.5rem,6vw,5rem)] font-bold leading-[0.9] tracking-[-0.04em] text-[#f5ecec]" style={displayFontStyle}>
+                  <h2 className="mt-2 text-[clamp(2.5rem,6vw,5rem)] font-bold leading-[0.9] tracking-[-0.04em] text-[#f5ecec]" style={headingFontStyle}>
                     {ch.title}
                   </h2>
                 </div>
@@ -175,7 +178,7 @@ export default function VisualPage() {
       <section className="mx-auto w-4/5 py-24">
         <FadeIn direction="up">
           <p className="mb-2 text-[0.68rem] uppercase tracking-[0.3em] text-white/50">Color story</p>
-          <h2 className="mb-16 text-4xl font-bold tracking-[-0.04em] text-[#f5ecec] sm:text-6xl" style={displayFontStyle}>
+          <h2 className="mb-16 text-4xl font-bold tracking-[-0.04em] text-[#f5ecec] sm:text-6xl" style={headingFontStyle}>
             Five colors.<br />No exceptions.
           </h2>
         </FadeIn>
@@ -201,7 +204,7 @@ export default function VisualPage() {
                   <div className="flex flex-col items-end text-right">
                     <p
                       className="text-xl font-bold tracking-[-0.03em] text-[#f5ecec] sm:text-3xl"
-                      style={displayFontStyle}
+                      style={headingFontStyle}
                     >
                       {color.name}
                     </p>
@@ -219,7 +222,7 @@ export default function VisualPage() {
         <div className="mt-32">
           <FadeIn direction="up">
             <p className="mb-2 text-[0.68rem] uppercase tracking-[0.3em] text-white/50">Typography</p>
-            <h2 className="mb-16 text-4xl font-bold tracking-[-0.04em] text-[#f5ecec] sm:text-6xl" style={displayFontStyle}>
+            <h2 className="mb-16 text-4xl font-bold tracking-[-0.04em] text-[#f5ecec] sm:text-6xl" style={headingFontStyle}>
               Three voices.<br />One language.
             </h2>
           </FadeIn>
@@ -234,7 +237,7 @@ export default function VisualPage() {
                     </span>
                     <p
                       className="mt-3 text-2xl font-bold tracking-[-0.02em] text-[#f5ecec] sm:text-3xl"
-                      style={displayFontStyle}
+                      style={headingFontStyle}
                     >
                       {tf.name}
                     </p>
@@ -308,7 +311,7 @@ export default function VisualPage() {
       <section className="mx-auto w-4/5 py-24">
         <FadeIn direction="up">
           <p className="mb-2 text-[0.68rem] uppercase tracking-[0.3em] text-white/50">Editorial</p>
-          <h2 className="mb-12 text-4xl font-bold tracking-[-0.04em] text-[#f5ecec] sm:text-6xl" style={displayFontStyle}>
+          <h2 className="mb-12 text-4xl font-bold tracking-[-0.04em] text-[#f5ecec] sm:text-6xl" style={headingFontStyle}>
             The Object.<br />The Mark. The City.
           </h2>
         </FadeIn>
@@ -369,7 +372,7 @@ export default function VisualPage() {
         <div className="mx-auto mb-12 w-4/5">
           
             <p className="mb-2 text-[0.68rem] uppercase tracking-[0.3em] text-white/50">Interactive Gallery</p>
-            <h2 className="mb-4 text-4xl font-bold tracking-[-0.04em] text-[#f5ecec] sm:text-6xl" style={displayFontStyle}>
+            <h2 className="mb-4 text-4xl font-bold tracking-[-0.04em] text-[#f5ecec] sm:text-6xl" style={headingFontStyle}>
               The Visual<br />Archive
             </h2>
             <p className="mt-4 max-w-[50ch] text-base leading-relaxed text-white/70">
