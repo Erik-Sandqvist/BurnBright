@@ -15,6 +15,42 @@ const palette = [
   { hex: '#feeadd', name: 'First Light',label: 'FEEADD', desc: 'The hour after dawn.' },
 ]
 
+const typefaces = [
+  {
+    name: 'Above The Sky',
+    weight: 'Condensed Cursivey',
+    role: 'Display · Logotype',
+    sample: 'Burn Bright',
+    family: '"above-the-sky-condensed","Adore You","Geist Variable",sans-serif',
+    fontWeight: 400,
+    size: 'clamp(2.6rem, 7vw, 5.5rem)',
+    tracking: '-0.02em',
+    lineHeight: 1,
+  },
+  {
+    name: 'Bahnschrift',
+    weight: 'SemiBold',
+    role: 'Headings · UI',
+    sample: 'AFTER DARK',
+    family: '"Bahnschrift","Inter","Geist Variable","Segoe UI",sans-serif',
+    fontWeight: 600,
+    size: 'clamp(2rem, 5.5vw, 4rem)',
+    tracking: '0.04em',
+    lineHeight: 1.05,
+  },
+  {
+    name: 'Area Extended',
+    weight: 'Medium',
+    role: 'Body · Captions',
+    sample: 'A mood study, not a product line.',
+    family: '"Area Extended","Inter","Geist Variable",sans-serif',
+    fontWeight: 500,
+    size: 'clamp(1.25rem, 2.4vw, 2rem)',
+    tracking: '0.06em',
+    lineHeight: 1.4,
+  },
+]
+
 const chapters = [
   {
     num: '01',
@@ -177,6 +213,84 @@ export default function VisualPage() {
               </FadeIn>
             )
           })}
+        </div>
+
+        {/* Typography */}
+        <div className="mt-32">
+          <FadeIn direction="up">
+            <p className="mb-2 text-[0.68rem] uppercase tracking-[0.3em] text-white/50">Typography</p>
+            <h2 className="mb-16 text-4xl font-bold tracking-[-0.04em] text-[#f5ecec] sm:text-6xl" style={displayFontStyle}>
+              Three voices.<br />One language.
+            </h2>
+          </FadeIn>
+          <div className="divide-y divide-white/15 border-y border-white/15">
+            {typefaces.map((tf, i) => (
+              <FadeIn key={tf.name} direction="up" delay={i * 90}>
+                <div className="group grid gap-6 py-10 transition-all duration-500 sm:grid-cols-[1fr_2fr] sm:gap-10 sm:py-14">
+                  {/* Meta */}
+                  <div className="flex flex-col">
+                    <span className="text-[0.62rem] uppercase tracking-[0.3em] text-[#ec2227]/60">
+                      0{i + 1} · {tf.role}
+                    </span>
+                    <p
+                      className="mt-3 text-2xl font-bold tracking-[-0.02em] text-[#f5ecec] sm:text-3xl"
+                      style={displayFontStyle}
+                    >
+                      {tf.name}
+                    </p>
+                    <p className="mt-1 font-mono text-xs uppercase tracking-[0.2em] text-white/45">
+                      {tf.weight}
+                    </p>
+                    <div className="mt-4 hidden h-px w-12 bg-[#ec2227]/60 transition-all duration-500 group-hover:w-24 sm:block" />
+                  </div>
+                  {/* Sample */}
+                  <div className="flex items-center">
+                    <p
+                      className="text-[#f5ecec] transition-colors duration-500 group-hover:text-white"
+                      style={{
+                        fontFamily: tf.family,
+                        fontWeight: tf.fontWeight,
+                        fontSize: tf.size,
+                        letterSpacing: tf.tracking,
+                        lineHeight: tf.lineHeight,
+                        textShadow: '0 8px 32px rgba(0,0,0,0.55)',
+                      }}
+                    >
+                      {tf.sample}
+                    </p>
+                  </div>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+
+          {/* Alphabet ladder */}
+          <FadeIn direction="up" delay={120}>
+            <div className="mt-16 grid gap-4 sm:grid-cols-3">
+              {typefaces.map((tf) => (
+                <div
+                  key={`${tf.name}-abc`}
+                  className="rounded-2xl border border-white/10 bg-white/[0.02] p-6"
+                >
+                  <p className="mb-3 font-mono text-[0.62rem] uppercase tracking-[0.28em] text-white/40">
+                    {tf.name}
+                  </p>
+                  <p
+                    className="break-all text-[#f5ecec]/85"
+                    style={{
+                      fontFamily: tf.family,
+                      fontWeight: tf.fontWeight,
+                      fontSize: 'clamp(1.4rem, 2.6vw, 2rem)',
+                      letterSpacing: tf.tracking,
+                      lineHeight: 1.1,
+                    }}
+                  >
+                    Aa Bb Cc 0123
+                  </p>
+                </div>
+              ))}
+            </div>
+          </FadeIn>
         </div>
       </section>
 
