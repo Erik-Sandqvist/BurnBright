@@ -284,7 +284,7 @@ export default function VisualPage() {
         <FoldIn>
           <div className="overflow-hidden rounded-[28px] shadow-[0_40px_90px_rgba(0,0,0,0.7),0_0_0_1px_rgba(255,255,255,0.07)]">
             <video className="block w-full" muted autoPlay loop playsInline>
-              <source src={assetUrl('Main.mp4')} type="video/mp4" />
+              <source src={assetUrl('Mainex.mp4')} type="video/mp4" />
             </video>
           </div>
         </FoldIn>

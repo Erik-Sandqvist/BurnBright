@@ -67,30 +67,41 @@ export default function LoveScrolly() {
     [],
   )
 
-  const e = ease(progress)
+  // Stage-based pacing — each animation gets its own scroll window.
+  // p:    0 ------- 0.10 ------- 0.40 ------- 0.70 ------- 0.90 ------- 1.0
+  // phase: night     horizon       sun rises    full dawn    hold caption
+  const pSky = ease(clamp((progress - 0.08) / 0.55))
+  const pSun = ease(clamp((progress - 0.18) / 0.50))
+  const pStars = clamp((progress - 0.05) / 0.30)
+  const pHorizon = clamp((progress - 0.10) / 0.30)
+  const pMoon = clamp(progress / 0.20)
+  const pCaption = clamp((progress - 0.62) / 0.18)
+  const pSub = clamp((progress - 0.74) / 0.16)
+  const pIntro = clamp(1 - progress / 0.10)
+  const pGlow = ease(clamp((progress - 0.18) / 0.62))
 
   // Sky color transitions: void → deep ember → heat → first light
-  const skyTop = `rgb(${Math.round(lerp(2, 28, e))}, ${Math.round(lerp(2, 6, e))}, ${Math.round(lerp(8, 24, e))})`
-  const skyMid = `rgb(${Math.round(lerp(8, 200, e))}, ${Math.round(lerp(6, 80, e))}, ${Math.round(lerp(20, 60, e))})`
-  const skyBot = `rgb(${Math.round(lerp(20, 254, e))}, ${Math.round(lerp(8, 234, e))}, ${Math.round(lerp(24, 221, e))})`
+  const skyTop = `rgb(${Math.round(lerp(2, 28, pSky))}, ${Math.round(lerp(2, 6, pSky))}, ${Math.round(lerp(8, 24, pSky))})`
+  const skyMid = `rgb(${Math.round(lerp(8, 200, pSky))}, ${Math.round(lerp(6, 80, pSky))}, ${Math.round(lerp(20, 60, pSky))})`
+  const skyBot = `rgb(${Math.round(lerp(20, 254, pSky))}, ${Math.round(lerp(8, 234, pSky))}, ${Math.round(lerp(24, 221, pSky))})`
 
   // Sun rises from below the viewport (130%) to behind logo (45%)
-  const sunY = lerp(130, 45, e)
-  const sunScale = lerp(0.6, 1.15, e)
-  const sunOpacity = clamp(progress * 1.6)
-  const starsOpacity = clamp(1 - progress * 1.9)
-  const horizonOpacity = clamp((progress - 0.15) * 1.4)
-  const moonOpacity = clamp(1 - progress * 2.3)
+  const sunY = lerp(130, 45, pSun)
+  const sunScale = lerp(0.6, 1.15, pSun)
+  const sunOpacity = clamp(pSun * 1.5)
+  const starsOpacity = clamp(1 - pStars)
+  const horizonOpacity = pHorizon
+  const moonOpacity = clamp(1 - pMoon)
 
   // Logo glow grows as sun rises
-  const glow1 = lerp(8, 70, e)
-  const glow2 = lerp(0, 180, e)
-  const logoBrightness = lerp(0.78, 1.05, e)
+  const glow1 = lerp(8, 70, pGlow)
+  const glow2 = lerp(0, 180, pGlow)
+  const logoBrightness = lerp(0.78, 1.05, pGlow)
 
   // Text reveal
-  const captionAt = clamp((progress - 0.55) / 0.3)
-  const subAt = clamp((progress - 0.7) / 0.25)
-  const introAt = clamp(1 - progress * 3)
+  const captionAt = pCaption
+  const subAt = pSub
+  const introAt = pIntro
 
   return (
     <section
@@ -112,7 +123,7 @@ export default function LoveScrolly() {
         {/* Stars layer */}
         <div
           className="absolute inset-0 pointer-events-none"
-          style={{ opacity: starsOpacity, transform: `translateY(${-progress * 30}px)` }}
+          style={{ opacity: starsOpacity, transform: `translateY(${-pStars * 30}px)` }}
         >
           {stars.map((s) => (
             <span
@@ -174,7 +185,7 @@ export default function LoveScrolly() {
             borderRadius: '50%',
             background:
               'radial-gradient(circle at center, rgba(255,240,200,1) 0%, rgba(246,138,31,0.92) 22%, rgba(236,34,39,0.55) 46%, rgba(110,14,16,0) 72%)',
-            filter: `blur(${lerp(28, 6, e)}px)`,
+            filter: `blur(${lerp(28, 6, pSun)}px)`,
             opacity: sunOpacity,
             mixBlendMode: 'screen',
           }}
@@ -191,7 +202,7 @@ export default function LoveScrolly() {
             borderRadius: '50%',
             background:
               'radial-gradient(circle at center, rgba(255,255,240,1) 0%, rgba(255,210,120,0.85) 40%, rgba(246,138,31,0) 75%)',
-            opacity: clamp((progress - 0.25) * 1.8),
+            opacity: clamp((pSun - 0.15) * 1.6),
             mixBlendMode: 'screen',
           }}
         />
@@ -217,7 +228,7 @@ export default function LoveScrolly() {
             transform: 'translate(-50%, -30%)',
             background:
               'conic-gradient(from 90deg at 50% 50%, rgba(255,220,160,0) 0deg, rgba(255,220,160,0.10) 8deg, rgba(255,220,160,0) 16deg, rgba(255,220,160,0) 30deg, rgba(255,220,160,0.07) 40deg, rgba(255,220,160,0) 50deg, rgba(255,220,160,0) 80deg, rgba(255,220,160,0.09) 92deg, rgba(255,220,160,0) 104deg, rgba(255,220,160,0) 140deg, rgba(255,220,160,0.08) 152deg, rgba(255,220,160,0) 164deg, rgba(255,220,160,0) 360deg)',
-            opacity: clamp((progress - 0.45) * 1.6) * 0.7,
+            opacity: clamp((pSun - 0.40) * 1.6) * 0.7,
             mixBlendMode: 'screen',
             animation: 'bb-rays 30s linear infinite',
           }}
@@ -229,7 +240,7 @@ export default function LoveScrolly() {
           style={{
             background:
               'radial-gradient(ellipse at center, rgba(0,0,0,0) 45%, rgba(0,0,0,0.55) 100%)',
-            opacity: 1 - progress * 0.4,
+            opacity: 1 - pSky * 0.4,
           }}
         />
 
@@ -253,7 +264,7 @@ export default function LoveScrolly() {
               className="block w-[58vmin] max-w-[640px] select-none"
               draggable={false}
               style={{
-                filter: `brightness(${logoBrightness}) drop-shadow(0 0 ${glow1}px rgba(255,180,90,${0.35 + e * 0.55})) drop-shadow(0 0 ${glow2}px rgba(236,34,39,${0.15 + e * 0.45}))`,
+                filter: `brightness(${logoBrightness}) drop-shadow(0 0 ${glow1}px rgba(255,180,90,${0.35 + pGlow * 0.55})) drop-shadow(0 0 ${glow2}px rgba(236,34,39,${0.15 + pGlow * 0.45}))`,
                 transition: 'filter 120ms linear',
               }}
             />
