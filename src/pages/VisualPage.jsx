@@ -5,6 +5,7 @@ import PosterSection from '../components/PosterSection'
 import DomeGallery from '../components/DomeGallery'
 import LoveScrolly from '../components/LoveScrolly'
 import { assetUrl, headingFontStyle } from '../lib/utils'
+import HorizontalScroll from '@/components/HorizontalScroll'
 
 const palette = [
   { hex: '#ec2227', name: 'The Red',    label: 'EC2227', desc: 'Primary accent. The flare.' },
@@ -134,8 +135,6 @@ export default function VisualPage() {
       {/* Marquee */}
       <Marquee text="ORIGIN · THE RED · THE EDIT · THE MOOD · FOUR COLORS · INTENTIONAL · SATURATED · LIMITED" speed={50} />
 
-      {/* Scrollytelling: night → dawn behind the logo */}
-      <LoveScrolly />
 
       {/* Chapter grid */}
       <section className="mx-auto w-4/5 py-24">
@@ -168,7 +167,7 @@ export default function VisualPage() {
         <FoldIn>
           <img
             className="block h-screen w-screen object-cover"
-            src={assetUrl('img/redgirl.png')}
+            src={assetUrl('img/tote mock.jpg')}
             alt="Burn Bright editorial"
           />
         </FoldIn>
@@ -179,7 +178,7 @@ export default function VisualPage() {
         <FadeIn direction="up">
           <p className="mb-2 text-[0.68rem] uppercase tracking-[0.3em] text-white/50">Color story</p>
           <h2 className="mb-16 text-4xl font-bold tracking-[-0.04em] text-[#f5ecec] sm:text-6xl" style={headingFontStyle}>
-            Five colors.<br />No exceptions.
+            The colors of Love and Fire.<br />
           </h2>
         </FadeIn>
         <div className="divide-y divide-white/15 border-t border-white/15">
@@ -223,7 +222,7 @@ export default function VisualPage() {
           <FadeIn direction="up">
             <p className="mb-2 text-[0.68rem] uppercase tracking-[0.3em] text-white/50">Typography</p>
             <h2 className="mb-16 text-4xl font-bold tracking-[-0.04em] text-[#f5ecec] sm:text-6xl" style={headingFontStyle}>
-              Three voices.<br />One language.
+              The language of Love and Fire<br />
             </h2>
           </FadeIn>
           <div className="divide-y divide-white/15 border-y border-white/15">
@@ -297,15 +296,7 @@ export default function VisualPage() {
         </div>
       </section>
 
-      <section className="relative left-1/2 right-1/2 mx-[-50vw] w-screen">
-        <FoldIn>
-          <img
-            className="block h-screen w-screen object-cover"
-            src={assetUrl('img/guty.jpg')}
-            alt="Burn Bright editorial"
-          />
-        </FoldIn>
-      </section>
+     <HorizontalScroll />
 
       {/* Editorial photo grid */}
       <section className="mx-auto w-4/5 py-24">
