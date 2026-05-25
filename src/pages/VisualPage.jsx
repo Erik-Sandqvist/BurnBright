@@ -4,8 +4,48 @@ import Marquee from '../components/Marquee'
 import PosterSection from '../components/PosterSection'
 import DomeGallery from '../components/DomeGallery'
 import LoveScrolly from '../components/LoveScrolly'
+import HorizontalScroll from '../components/HorizontalScroll'
 import { assetUrl, headingFontStyle } from '../lib/utils'
-import HorizontalScroll from '@/components/HorizontalScroll'
+
+function BrushStrokeH({ className = '' }) {
+  return (
+    <svg viewBox="0 0 560 14" preserveAspectRatio="none" fill="none" aria-hidden="true"
+      className={`overflow-visible ${className}`}>
+      <defs>
+        <filter id="bbh" x="-2%" y="-200%" width="104%" height="500%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.78 0.38" numOctaves="4" seed="3" result="n"/>
+          <feDisplacementMap in="SourceGraphic" in2="n" scale="2.8" xChannelSelector="R" yChannelSelector="G"/>
+        </filter>
+      </defs>
+      <path d="M2,7 C70,4 160,10 280,6 C400,3 480,9 558,6"
+        stroke="#ec2227" strokeWidth="2.5" strokeLinecap="round" opacity="0.38" filter="url(#bbh)"/>
+      <path d="M40,9 C130,6 250,11 360,8 C450,5 520,10 545,8"
+        stroke="#ec2227" strokeWidth="1" strokeLinecap="round" opacity="0.18" filter="url(#bbh)"/>
+      <path d="M2,5 C100,3 230,7 340,5 C450,3 515,7 558,5"
+        stroke="#f68a1f" strokeWidth="0.8" strokeLinecap="round" opacity="0.15" filter="url(#bbh)"/>
+    </svg>
+  )
+}
+
+function BrushStrokeV({ className = '' }) {
+  return (
+    <svg viewBox="0 0 14 560" preserveAspectRatio="none" fill="none" aria-hidden="true"
+      className={`overflow-visible ${className}`}>
+      <defs>
+        <filter id="bbv" x="-200%" y="-2%" width="500%" height="104%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.38 0.78" numOctaves="4" seed="7" result="n"/>
+          <feDisplacementMap in="SourceGraphic" in2="n" scale="2.8" xChannelSelector="R" yChannelSelector="G"/>
+        </filter>
+      </defs>
+      <path d="M7,2 C4,70 10,160 6,280 C3,400 9,480 6,558"
+        stroke="#ec2227" strokeWidth="2" strokeLinecap="round" opacity="0.28" filter="url(#bbv)"/>
+      <path d="M9,40 C6,130 11,250 8,370 C5,460 10,520 8,545"
+        stroke="#ec2227" strokeWidth="0.8" strokeLinecap="round" opacity="0.13" filter="url(#bbv)"/>
+      <path d="M5,20 C3,110 8,220 5,330 C3,430 7,500 5,555"
+        stroke="#f68a1f" strokeWidth="0.7" strokeLinecap="round" opacity="0.1" filter="url(#bbv)"/>
+    </svg>
+  )
+}
 
 const palette = [
   { hex: '#ec2227', name: 'The Red',    label: 'EC2227', desc: 'Primary accent. The flare.' },
@@ -129,6 +169,11 @@ export default function VisualPage() {
               A brand built on four colors, one red, and the specific feeling of after-dark energy.
             </p>
           </FadeIn>
+          <FadeIn direction="left" delay={260}>
+            <div className="mt-8 w-[min(100%,420px)]">
+              <BrushStrokeH className="h-[14px] w-full" />
+            </div>
+          </FadeIn>
         </div>
       </section>
 
@@ -138,27 +183,56 @@ export default function VisualPage() {
 
       {/* Chapter grid */}
       <section className="mx-auto w-4/5 py-24">
-        <div className="grid gap-16 lg:gap-24">
-          {chapters.map((ch, i) => (
-            <div
-              key={ch.num}
-              className={`grid items-start gap-8 lg:grid-cols-[1fr_1.4fr] ${i % 2 === 1 ? 'lg:[direction:rtl]' : ''}`}
-            >
-              <FadeIn direction={i % 2 === 0 ? 'left' : 'right'} className={i % 2 === 1 ? 'lg:[direction:ltr]' : ''}>
-                <div>
-                  <span className="text-[0.62rem] uppercase tracking-[0.3em] text-[#ec2227]/60">{ch.num}</span>
-                  <h2 className="mt-2 text-[clamp(2.5rem,6vw,5rem)] font-bold leading-[0.9] tracking-[-0.04em] text-[#f5ecec]" style={headingFontStyle}>
-                    {ch.title}
-                  </h2>
+
+        {/* Section header with horizontal brush stroke */}
+        <FadeIn direction="left">
+          <div className="mb-10 flex items-center gap-5">
+            <p className="shrink-0 text-[0.62rem] uppercase tracking-[0.3em] text-[#ec2227]/55">The Story</p>
+            <BrushStrokeH className="h-[14px] flex-1" />
+          </div>
+        </FadeIn>
+
+        <div className="relative lg:pl-7">
+          {/* Vertical brush stroke spanning full chapter grid */}
+          <div className="pointer-events-none absolute bottom-0 left-0 top-0 hidden w-3 lg:block">
+            <BrushStrokeV className="h-full w-full" />
+          </div>
+
+          <div className="grid gap-0">
+            {chapters.map((ch, i) => (
+              <div key={ch.num}>
+                {/* Horizontal brush divider above each chapter */}
+                <FadeIn direction="soft" delay={30}>
+                  <div className="py-5">
+                    <BrushStrokeH className="h-[14px] w-full" />
+                  </div>
+                </FadeIn>
+
+                <div
+                  className={`grid items-start gap-8 pb-16 lg:grid-cols-[1fr_1.4fr] ${i % 2 === 1 ? 'lg:[direction:rtl]' : ''}`}
+                >
+                  <FadeIn direction={i % 2 === 0 ? 'left' : 'right'} className={i % 2 === 1 ? 'lg:[direction:ltr]' : ''}>
+                    <div>
+                      <span className="text-[0.62rem] uppercase tracking-[0.3em] text-[#ec2227]/60">{ch.num}</span>
+                      <h2 className="mt-2 text-[clamp(2.5rem,6vw,5rem)] font-bold leading-[0.9] tracking-[-0.04em] text-[#f5ecec]" style={headingFontStyle}>
+                        {ch.title}
+                      </h2>
+                    </div>
+                  </FadeIn>
+                  <FadeIn direction={i % 2 === 0 ? 'right' : 'left'} delay={100} className={i % 2 === 1 ? 'lg:[direction:ltr]' : ''}>
+                    <p className="text-lg leading-8 text-white/70 lg:pt-6">
+                      {ch.body}
+                    </p>
+                  </FadeIn>
                 </div>
-              </FadeIn>
-              <FadeIn direction={i % 2 === 0 ? 'right' : 'left'} delay={100} className={i % 2 === 1 ? 'lg:[direction:ltr]' : ''}>
-                <p className="text-lg leading-8 text-white/70 lg:pt-6">
-                  {ch.body}
-                </p>
-              </FadeIn>
-            </div>
-          ))}
+              </div>
+            ))}
+
+            {/* Closing brush stroke */}
+            <FadeIn direction="soft">
+              <BrushStrokeH className="h-[14px] w-full" />
+            </FadeIn>
+          </div>
         </div>
       </section>
 
@@ -175,12 +249,26 @@ export default function VisualPage() {
 
       {/* Palette section */}
       <section className="mx-auto w-4/5 py-24">
-        <FadeIn direction="up">
-          <p className="mb-2 text-[0.68rem] uppercase tracking-[0.3em] text-white/50">Color story</p>
-          <h2 className="mb-16 text-4xl font-bold tracking-[-0.04em] text-[#f5ecec] sm:text-6xl" style={headingFontStyle}>
-            The colors of Love and Fire.<br />
+        <FadeIn direction="left">
+          <div className="mb-4 flex items-center gap-5">
+            <p className="shrink-0 text-[0.68rem] uppercase tracking-[0.3em] text-white/50">Color story</p>
+            <BrushStrokeH className="h-[14px] flex-1" />
+          </div>
+        </FadeIn>
+        <FadeIn direction="up" delay={60}>
+          <h2 className="mb-4 text-4xl font-bold tracking-[-0.04em] text-[#f5ecec] sm:text-6xl" style={headingFontStyle}>
+            The colors of Love and Fire.
           </h2>
         </FadeIn>
+        <FadeIn direction="left" delay={120}>
+          <div className="mb-12">
+            <BrushStrokeH className="h-[14px] w-[min(100%,380px)]" />
+          </div>
+        </FadeIn>
+        <div className="relative lg:pl-7">
+          <div className="pointer-events-none absolute bottom-0 left-0 top-0 hidden w-3 lg:block">
+            <BrushStrokeV className="h-full w-full" />
+          </div>
         <div className="divide-y divide-white/15 border-t border-white/15">
           {palette.map((color, i) => {
             return (
@@ -216,54 +304,79 @@ export default function VisualPage() {
             )
           })}
         </div>
+        </div>
 
         {/* Typography */}
         <div className="mt-32">
-          <FadeIn direction="up">
-            <p className="mb-2 text-[0.68rem] uppercase tracking-[0.3em] text-white/50">Typography</p>
-            <h2 className="mb-16 text-4xl font-bold tracking-[-0.04em] text-[#f5ecec] sm:text-6xl" style={headingFontStyle}>
-              The language of Love and Fire<br />
+          <FadeIn direction="left">
+            <div className="mb-4 flex items-center gap-5">
+              <p className="shrink-0 text-[0.68rem] uppercase tracking-[0.3em] text-white/50">Typography</p>
+              <BrushStrokeH className="h-[14px] flex-1" />
+            </div>
+          </FadeIn>
+          <FadeIn direction="up" delay={60}>
+            <h2 className="mb-4 text-4xl font-bold tracking-[-0.04em] text-[#f5ecec] sm:text-6xl" style={headingFontStyle}>
+              The language of Love and Fire
             </h2>
           </FadeIn>
-          <div className="divide-y divide-white/15 border-y border-white/15">
+          <FadeIn direction="left" delay={120}>
+            <div className="mb-12">
+              <BrushStrokeH className="h-[14px] w-[min(100%,340px)]" />
+            </div>
+          </FadeIn>
+          <div>
             {typefaces.map((tf, i) => (
-              <FadeIn key={tf.name} direction="up" delay={i * 90}>
-                <div className="group grid gap-6 py-10 transition-all duration-500 sm:grid-cols-[1fr_2fr] sm:gap-10 sm:py-14">
-                  {/* Meta */}
-                  <div className="flex flex-col">
-                    <span className="text-[0.62rem] uppercase tracking-[0.3em] text-[#ec2227]/60">
-                      0{i + 1} · {tf.role}
-                    </span>
-                    <p
-                      className="mt-3 text-2xl font-bold tracking-[-0.02em] text-[#f5ecec] sm:text-3xl"
-                      style={headingFontStyle}
-                    >
-                      {tf.name}
-                    </p>
-                    <p className="mt-1 font-mono text-xs uppercase tracking-[0.2em] text-white/45">
-                      {tf.weight}
-                    </p>
-                    <div className="mt-4 hidden h-px w-12 bg-[#ec2227]/60 transition-all duration-500 group-hover:w-24 sm:block" />
+              <div key={tf.name}>
+                <FadeIn direction="soft" delay={i * 30}>
+                  <div className="py-4">
+                    <BrushStrokeH className="h-[14px] w-full" />
                   </div>
-                  {/* Sample */}
-                  <div className="flex items-center">
-                    <p
-                      className="text-[#f5ecec] transition-colors duration-500 group-hover:text-white"
-                      style={{
-                        fontFamily: tf.family,
-                        fontWeight: tf.fontWeight,
-                        fontSize: tf.size,
-                        letterSpacing: tf.tracking,
-                        lineHeight: tf.lineHeight,
-                        textShadow: '0 8px 32px rgba(0,0,0,0.55)',
-                      }}
-                    >
-                      {tf.sample}
-                    </p>
+                </FadeIn>
+                <FadeIn direction="up" delay={i * 90}>
+                  <div className="group grid gap-6 py-8 transition-all duration-500 sm:grid-cols-[1fr_2fr] sm:gap-10 sm:py-12">
+                    {/* Meta */}
+                    <div className="flex flex-col">
+                      <span className="text-[0.62rem] uppercase tracking-[0.3em] text-[#ec2227]/60">
+                        0{i + 1} · {tf.role}
+                      </span>
+                      <p
+                        className="mt-3 text-2xl font-bold tracking-[-0.02em] text-[#f5ecec] sm:text-3xl"
+                        style={headingFontStyle}
+                      >
+                        {tf.name}
+                      </p>
+                      <p className="mt-1 font-mono text-xs uppercase tracking-[0.2em] text-white/45">
+                        {tf.weight}
+                      </p>
+                      <div className="mt-5 hidden sm:block w-[clamp(48px,8vw,96px)]">
+                        <BrushStrokeH className="h-[10px] w-full opacity-70 transition-all duration-500 group-hover:opacity-100" />
+                      </div>
+                    </div>
+                    {/* Sample */}
+                    <div className="flex items-center">
+                      <p
+                        className="text-[#f5ecec] transition-colors duration-500 group-hover:text-white"
+                        style={{
+                          fontFamily: tf.family,
+                          fontWeight: tf.fontWeight,
+                          fontSize: tf.size,
+                          letterSpacing: tf.tracking,
+                          lineHeight: tf.lineHeight,
+                          textShadow: '0 8px 32px rgba(0,0,0,0.55)',
+                        }}
+                      >
+                        {tf.sample}
+                      </p>
+                    </div>
                   </div>
-                </div>
-              </FadeIn>
+                </FadeIn>
+              </div>
             ))}
+            <FadeIn direction="soft">
+              <div className="py-4">
+                <BrushStrokeH className="h-[14px] w-full" />
+              </div>
+            </FadeIn>
           </div>
 
           {/* Alphabet ladder */}
@@ -300,11 +413,21 @@ export default function VisualPage() {
 
       {/* Editorial photo grid */}
       <section className="mx-auto w-4/5 py-24">
-        <FadeIn direction="up">
-          <p className="mb-2 text-[0.68rem] uppercase tracking-[0.3em] text-white/50">Editorial</p>
-          <h2 className="mb-12 text-4xl font-bold tracking-[-0.04em] text-[#f5ecec] sm:text-6xl" style={headingFontStyle}>
+        <FadeIn direction="left">
+          <div className="mb-4 flex items-center gap-5">
+            <p className="shrink-0 text-[0.68rem] uppercase tracking-[0.3em] text-white/50">Editorial</p>
+            <BrushStrokeH className="h-[14px] flex-1" />
+          </div>
+        </FadeIn>
+        <FadeIn direction="up" delay={60}>
+          <h2 className="mb-4 text-4xl font-bold tracking-[-0.04em] text-[#f5ecec] sm:text-6xl" style={headingFontStyle}>
             The Object.<br />The Mark. The City.
           </h2>
+        </FadeIn>
+        <FadeIn direction="left" delay={120}>
+          <div className="mb-10">
+            <BrushStrokeH className="h-[14px] w-[min(100%,300px)]" />
+          </div>
         </FadeIn>
         <div className="grid gap-4 lg:grid-cols-[1.6fr_1fr] lg:grid-rows-2">
           {/* Large product hero — spans both rows */}
@@ -356,7 +479,20 @@ export default function VisualPage() {
       </section>
 
       {/* Poster breakdown */}
+      <FadeIn direction="left">
+        <div className="mx-auto w-4/5 pb-2 pt-8">
+          <div className="flex items-center gap-5">
+            <p className="shrink-0 text-[0.62rem] uppercase tracking-[0.3em] text-[#ec2227]/50">Poster No. 1</p>
+            <BrushStrokeH className="h-[14px] flex-1" />
+          </div>
+        </div>
+      </FadeIn>
       <PosterSection />
+      <FadeIn direction="soft">
+        <div className="mx-auto w-4/5 pt-4">
+          <BrushStrokeH className="h-[14px] w-full" />
+        </div>
+      </FadeIn>
 
       {/* Dome Gallery - Interactive image gallery */}
       {/* <section className="relative w-full overflow-hidden bg-[#1a1420] py-32">
@@ -400,7 +536,12 @@ export default function VisualPage() {
 
       {/* Credits */}
       <section className="mx-auto w-4/5 py-20">
-        <div className="grid gap-8 border-t border-white/15 pt-12 sm:grid-cols-3">
+        <FadeIn direction="soft">
+          <div className="mb-10">
+            <BrushStrokeH className="h-[14px] w-full" />
+          </div>
+        </FadeIn>
+        <div className="grid gap-8 pt-4 sm:grid-cols-3">
           {[
             { label: 'Direction', value: 'Burn Bright Studio' },
             { label: 'Year', value: 'MMXXVI' },
@@ -416,7 +557,12 @@ export default function VisualPage() {
         </div>
       </section>
 
-      <footer className="mx-auto w-4/5 pb-4 pt-2" id="contact">
+      <footer className="mx-auto w-4/5 pb-6 pt-2" id="contact">
+        <FadeIn direction="soft">
+          <div className="mb-4">
+            <BrushStrokeH className="h-[14px] w-[min(100%,240px)]" />
+          </div>
+        </FadeIn>
         <p className="text-[0.68rem] uppercase tracking-[0.18em] text-white/30">
           Burn Bright / a mood study for a fictional label.
         </p>
