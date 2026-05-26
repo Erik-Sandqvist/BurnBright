@@ -1,7 +1,7 @@
 import FadeIn from './FadeIn'
 import { assetUrl, headingFontStyle } from '../lib/utils'
 
-const annotations = [
+const defaultAnnotations = [
   {
     index: '01',
     label: 'Shadow form',
@@ -21,10 +21,13 @@ const annotations = [
 
 export default function PosterSection({
   sectionLabel = 'Poster No. 1',
-  title = 'The Declaration.',
+  title = 'The Posters.',
   imagePath = 'img/poster1.jpg',
   imageAlt = 'Burn Bright Poster — Let the love Burn in your Way',
-  details = 'Medium — Digital print · Format — A2 · Year — MMXXVI',
+  secondaryImagePath,
+  secondaryImageAlt = '',
+  annotations = defaultAnnotations,
+  details = 'Medium — Digital print · Format — 212500 x 18750 px ',
 }) {
   return (
     <section className="mx-auto w-4/5 py-24">
@@ -73,6 +76,18 @@ export default function PosterSection({
               </FadeIn>
             ))}
           </div>
+
+          {secondaryImagePath ? (
+            <FadeIn direction="up" delay={annotations.length * 90 + 30}>
+              <div className="mt-10 overflow-hidden rounded-[18px] border border-white/8 shadow-[0_24px_60px_rgba(0,0,0,0.55)]">
+                <img
+                  src={assetUrl(secondaryImagePath)}
+                  alt={secondaryImageAlt || imageAlt}
+                  className="block w-full object-cover"
+                />
+              </div>
+            </FadeIn>
+          ) : null}
 
           <FadeIn direction="up" delay={annotations.length * 90 + 60}>
             <div className="mt-10 border-t border-white/8 pt-8">

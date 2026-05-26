@@ -5,7 +5,7 @@ import PosterSection from '../components/PosterSection'
 import DomeGallery from '../components/DomeGallery'
 import LoveScrolly from '../components/LoveScrolly'
 import HorizontalScroll from '../components/HorizontalScroll'
-import { assetUrl, headingFontStyle } from '../lib/utils'
+import { assetUrl, displayFontStyle, headingFontStyle } from '../lib/utils'
 
 function BrushStrokeH({ className = '' }) {
   return (
@@ -95,22 +95,17 @@ const chapters = [
   {
     num: '01',
     title: 'Origin',
-    body: 'Burn Bright was born from the tension between restraint and intensity. Not a brand that shouts — one that smolders. Every silhouette is edited down to its essential form, then saturated with a color story that feels warm, dangerous, and carefully controlled.',
+    body: 'The project originated from a desire to create something universally relatable, driven entirely by emotion.',
   },
   {
     num: '02',
-    title: 'The Red',
-    body: 'EC2227. It is not fashion red. It is the color of something alive — a flare at the edge of peripheral vision. The entire collection is built around the weight of this single accent. Everything else exists to make the red feel inevitable.',
+    title: 'The Feeling',
+    body: 'Love is a highly subjective experience; it can be joyful and playful, but it can also be painful and challenging. The overarching message behind the brand is to encourage people to make space for love and let it "burn." How that message is ultimately interpreted is left open to the individual.',
   },
   {
     num: '03',
-    title: 'The Edit',
-    body: 'After dark, everything is a statement. The hoodie worn too heavy, the cap pulled too low — these are not mistakes. They are the language. Burn Bright dresses for the hour when everything else has gone quiet and what you wear is the only thing left speaking.',
-  },
-  {
-    num: '04',
     title: 'The Mood',
-    body: 'Limited. Saturated. Intentional. This is not a brand for all seasons. It is for the specific feeling of walking through a city at 1am with nowhere to be and everywhere to go. The collection is a mood study, not a product line.',
+    body: 'You should feel the motions of the brand when you see the it. The colors, the textures, the burning love.',
   },
 ]
 
@@ -157,7 +152,7 @@ export default function VisualPage() {
           <FadeIn direction="up" delay={80}>
             <h1
               className="text-[clamp(4rem,13vw,10rem)] font-bold leading-[0.85] tracking-[-0.04em] text-[#f5ecec]"
-              style={headingFontStyle}
+              style={displayFontStyle}
             >
               Behind
               <br />
@@ -167,9 +162,11 @@ export default function VisualPage() {
             </h1>
           </FadeIn>
           <FadeIn direction="soft" delay={180}>
-            <p className="mt-6 max-w-[50ch] text-base leading-relaxed text-white/55">
-              A brand built on four colors, one red, and the specific feeling of
-              after-dark energy.
+            <p
+              className="mt-6 max-w-[50ch] text-base leading-relaxed text-[#ec2227]/75"
+              style={{ fontFamily: '"Bahnschrift","Inter","Geist Variable","Segoe UI",sans-serif', fontWeight: 600 }}
+            >
+              A brand built around Love.
             </p>
           </FadeIn>
           <FadeIn direction="left" delay={260}>
@@ -185,87 +182,7 @@ export default function VisualPage() {
         text="ORIGIN · THE RED · THE EDIT · THE MOOD · FOUR COLORS · INTENTIONAL · SATURATED · LIMITED"
         speed={50}
       />
-
-      {/* Chapter grid */}
-      <section className="mx-auto w-4/5 py-24">
-        {/* Section header with horizontal brush stroke */}
-        <FadeIn direction="left">
-          <div className="mb-10 flex items-center gap-5">
-            <p className="shrink-0 text-[0.62rem] uppercase tracking-[0.3em] text-[#ec2227]/55">
-              The Story
-            </p>
-            <BrushStrokeH className="h-[14px] flex-1" />
-          </div>
-        </FadeIn>
-
-        <div className="relative lg:pl-7">
-          {/* Vertical brush stroke spanning full chapter grid */}
-          <div className="pointer-events-none absolute bottom-0 left-0 top-0 hidden w-3 lg:block">
-            <BrushStrokeV className="h-full w-full" />
-          </div>
-
-          <div className="grid gap-0">
-            {chapters.map((ch, i) => (
-              <div key={ch.num}>
-                {/* Horizontal brush divider above each chapter */}
-                <FadeIn direction="soft" delay={30}>
-                  <div className="py-5">
-                    <BrushStrokeH className="h-[14px] w-full" />
-                  </div>
-                </FadeIn>
-
-                <div
-                  className={`grid items-start gap-8 pb-16 lg:grid-cols-[1fr_1.4fr] ${i % 2 === 1 ? "lg:[direction:rtl]" : ""}`}
-                >
-                  <FadeIn
-                    direction={i % 2 === 0 ? "left" : "right"}
-                    className={i % 2 === 1 ? "lg:[direction:ltr]" : ""}
-                  >
-                    <div>
-                      <span className="text-[0.62rem] uppercase tracking-[0.3em] text-[#ec2227]/60">
-                        {ch.num}
-                      </span>
-                      <h2
-                        className="mt-2 text-[clamp(2.5rem,6vw,5rem)] font-bold leading-[0.9] tracking-[-0.04em] text-[#f5ecec]"
-                        style={headingFontStyle}
-                      >
-                        {ch.title}
-                      </h2>
-                    </div>
-                  </FadeIn>
-                  <FadeIn
-                    direction={i % 2 === 0 ? "right" : "left"}
-                    delay={100}
-                    className={i % 2 === 1 ? "lg:[direction:ltr]" : ""}
-                  >
-                    <p className="text-lg leading-8 text-white/70 lg:pt-6">
-                      {ch.body}
-                    </p>
-                  </FadeIn>
-                </div>
-              </div>
-            ))}
-
-            {/* Closing brush stroke */}
-            <FadeIn direction="soft">
-              <BrushStrokeH className="h-[14px] w-full" />
-            </FadeIn>
-          </div>
-        </div>
-      </section>
-
-      {/* Full-width image break */}
-      <section className="relative left-1/2 right-1/2 mx-[-50vw] w-screen">
-        <FoldIn>
-          <img
-            className="block h-screen w-screen object-cover"
-            src={assetUrl("img/tote mock.jpg")}
-            alt="Burn Bright editorial"
-          />
-        </FoldIn>
-      </section>
-
-      {/* Palette section */}
+         {/* Palette section */}
       <section className="mx-auto w-4/5 py-24">
         <FadeIn direction="left">
           <div className="mb-4 flex items-center gap-5">
@@ -292,38 +209,77 @@ export default function VisualPage() {
           <div className="pointer-events-none absolute bottom-0 left-0 top-0 hidden w-3 lg:block">
             <BrushStrokeV className="h-full w-full" />
           </div>
-          <div className="divide-y divide-white/15 border-t border-white/15">
-            {palette.map((color, i) => {
-              return (
-                <FadeIn key={color.hex} direction="up" delay={i * 70}>
-                  <div className="group flex items-center gap-8 py-6 transition-all duration-500 hover:gap-10 sm:gap-12 sm:py-8">
-                    {/* Swatch */}
-                    <div
-                      className="h-16 w-24 shrink-0 rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.55)] transition-all duration-500 group-hover:scale-105 sm:h-20 sm:w-32"
-                      style={{ backgroundColor: color.hex }}
-                    />
-                    {/* Hex */}
-                    <p className="w-[9ch] shrink-0 font-mono text-2xl font-light tracking-tight text-white/60 transition-colors duration-300 group-hover:text-white/90 sm:text-4xl">
-                      #{color.label}
-                    </p>
-                    {/* Divider line */}
-                    <div className="hidden h-px flex-1 bg-white/10 sm:block" />
-                    {/* Name + desc */}
-                    <div className="flex flex-col items-end text-right">
-                      <p
-                        className="text-xl font-bold tracking-[-0.03em] text-[#f5ecec] sm:text-3xl"
-                        style={headingFontStyle}
-                      >
-                        {color.name}
-                      </p>
-                      <p className="mt-1 hidden text-sm text-white/50 sm:block">
-                        {color.desc}
-                      </p>
-                    </div>
+
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {palette.slice(0, 3).map((color, i) => (
+              <FadeIn key={color.hex} direction="up" delay={i * 70}>
+                <div className="group overflow-hidden rounded-2xl bg-white/[0.06] border border-white/6 shadow-[0_20px_60px_rgba(0,0,0,0.6)] transition-transform hover:scale-105 p-6 flex flex-col items-center text-center min-h-[240px]">
+                  <div
+                    className="h-36 w-36 rounded-lg flex-shrink-0"
+                    style={{ backgroundColor: color.hex, boxShadow: `0 30px 80px ${color.hex}55, inset 0 -8px 30px ${color.hex}33` }}
+                    aria-hidden="true"
+                  />
+
+                  <div className="mt-4">
+                    <p className="text-sm font-mono text-white/60">#{color.label}</p>
+                    <p className="mt-1 text-2xl font-bold text-[#f5ecec]" style={headingFontStyle}>{color.name}</p>
+                    <p className="mt-2 text-sm text-white/50 hidden sm:block">{color.desc}</p>
                   </div>
-                </FadeIn>
-              );
-            })}
+
+                  <div className="mt-4 flex items-center gap-3">
+                    <div className="rounded-md px-4 py-2 text-sm text-white" style={{ backgroundColor: color.hex }}>Aa</div>
+                    <div className="rounded-md px-4 py-2 text-sm bg-white/[0.02]" style={{ color: color.hex }}>Sample text</div>
+                  </div>
+
+                  <div className="mt-4 flex items-center gap-3">
+                    <div className="font-mono text-sm text-white/90">{color.hex}</div>
+                    <button
+                      className="rounded-md border border-white/10 px-3 py-1 text-sm text-white/70 hover:text-white/90 transition"
+                      onClick={() => navigator.clipboard?.writeText(color.hex)}
+                      aria-label={`Copy ${color.hex}`}
+                    >
+                      Copy
+                    </button>
+                  </div>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+
+          <div className="mt-8 flex justify-center gap-6">
+            {palette.slice(3).map((color, j) => (
+              <FadeIn key={color.hex} direction="up" delay={(j + 3) * 70}>
+                <div className="w-[460px] max-w-[46vw] group overflow-hidden rounded-2xl bg-white/[0.06] border border-white/6 shadow-[0_20px_60px_rgba(0,0,0,0.6)] transition-transform hover:scale-105 p-6 flex flex-col items-center text-center min-h-[220px]">
+                  <div
+                    className="h-36 w-36 rounded-lg flex-shrink-0"
+                    style={{ backgroundColor: color.hex, boxShadow: `0 30px 80px ${color.hex}55, inset 0 -8px 30px ${color.hex}33` }}
+                    aria-hidden="true"
+                  />
+
+                  <div className="mt-4">
+                    <p className="text-sm font-mono text-white/60">#{color.label}</p>
+                    <p className="mt-1 text-2xl font-bold text-[#f5ecec]" style={headingFontStyle}>{color.name}</p>
+                    <p className="mt-2 text-sm text-white/50 hidden sm:block">{color.desc}</p>
+                  </div>
+
+                  <div className="mt-4 flex items-center gap-3">
+                    <div className="rounded-md px-4 py-2 text-sm text-white" style={{ backgroundColor: color.hex }}>Aa</div>
+                    <div className="rounded-md px-4 py-2 text-sm bg-white/[0.02]" style={{ color: color.hex }}>Sample text</div>
+                  </div>
+
+                  <div className="mt-4 flex items-center gap-3">
+                    <div className="font-mono text-sm text-white/90">{color.hex}</div>
+                    <button
+                      className="rounded-md border border-white/10 px-3 py-1 text-sm text-white/70 hover:text-white/90 transition"
+                      onClick={() => navigator.clipboard?.writeText(color.hex)}
+                      aria-label={`Copy ${color.hex}`}
+                    >
+                      Copy
+                    </button>
+                  </div>
+                </div>
+              </FadeIn>
+            ))}
           </div>
         </div>
 
@@ -435,6 +391,87 @@ export default function VisualPage() {
         </div>
       </section>
 
+      {/* Chapter grid */}
+      <section className="mx-auto w-full max-w-[1400px] py-24">
+        {/* Section header with horizontal brush stroke */}
+        <FadeIn direction="left">
+          <div className="mb-10 flex items-center gap-5">
+            <p className="shrink-0 text-[0.62rem] uppercase tracking-[0.3em] text-[#ec2227]/55">
+              The Story
+            </p>
+            <BrushStrokeH className="h-[14px] flex-1" />
+          </div>
+        </FadeIn>
+
+        <div className="relative lg:pl-7">
+          {/* Vertical brush stroke spanning full chapter grid */}
+          <div className="pointer-events-none absolute bottom-0 left-0 top-0 hidden w-3 lg:block">
+            <BrushStrokeV className="h-full w-full" />
+          </div>
+
+          <div className="grid gap-0">
+            {chapters.map((ch, i) => (
+              <div key={ch.num}>
+                {/* Horizontal brush divider above each chapter */}
+                <FadeIn direction="soft" delay={30}>
+                  <div className="py-5">
+                    <BrushStrokeH className="h-[14px] w-full" />
+                  </div>
+                </FadeIn>
+
+                <div
+                  className={`grid items-start gap-8 pb-16 lg:grid-cols-[1fr_1.4fr] ${i % 2 === 1 ? "lg:[direction:rtl]" : ""}`}
+                >
+                  <FadeIn
+                    direction={i % 2 === 0 ? "left" : "right"}
+                    className={i % 2 === 1 ? "lg:[direction:ltr]" : ""}
+                  >
+                    <div>
+                      <span className="text-[0.62rem] uppercase tracking-[0.3em] text-[#ec2227]/60">
+                        {ch.num}
+                      </span>
+                      <h2
+                        className="mt-2 text-[clamp(2.5rem,6vw,5rem)] font-bold leading-[0.9] tracking-[-0.04em] text-[#f5ecec]"
+                        style={headingFontStyle}
+                      >
+                        {ch.title}
+                      </h2>
+                    </div>
+                  </FadeIn>
+                  <FadeIn
+                    direction={i % 2 === 0 ? "right" : "left"}
+                    delay={100}
+                    className={i % 2 === 1 ? "lg:[direction:ltr]" : ""}
+                  >
+                    <p className="text-lg leading-8 text-white/70 lg:pt-6">
+                      {ch.body}
+                    </p>
+                  </FadeIn>
+                </div>
+              </div>
+            ))}
+
+            {/* Closing brush stroke */}
+            <FadeIn direction="soft">
+              <BrushStrokeH className="h-[14px] w-full" />
+            </FadeIn>
+          </div>
+        </div>
+      </section>
+
+      {/* Full-width image break */}
+      <section className="relative left-1/2 right-1/2 mx-[-50vw] w-screen">
+        <FoldIn>
+          <img
+            className="block h-screen w-screen object-cover"
+            src={assetUrl("img/tote mock.jpg")}
+            alt="Burn Bright editorial"
+          />
+        </FoldIn>
+      </section>
+
+   
+
       <HorizontalScroll />
 
       {/* Editorial photo grid */}
@@ -467,7 +504,7 @@ export default function VisualPage() {
           <FadeIn direction="left" className="lg:row-span-2">
             <div className="group relative overflow-hidden rounded-[20px]">
               <img
-                src={assetUrl("img/nice mock.jpg")}
+                src={assetUrl("img/cap.jpg")}
                 alt="Burn Bright hoodie on stone"
                 className="block h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
                 style={{ minHeight: "420px" }}
@@ -497,7 +534,7 @@ export default function VisualPage() {
           <FadeIn direction="right" delay={160}>
             <div className="group relative overflow-hidden rounded-[20px]">
               <img
-                src={assetUrl("img/train.jpg")}
+                src={assetUrl("img/tagmock.jpg")}
                 alt="Burn Bright subway ad"
                 className="block h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
                 style={{ minHeight: "200px", maxHeight: "320px" }}
@@ -520,14 +557,50 @@ export default function VisualPage() {
           </div>
         </div>
       </FadeIn>
-      <PosterSection />
+      <PosterSection
+        sectionLabel="Poster No. 1"
+        title="The Posters."
+        imagePath="img/poster1.jpg"
+        imageAlt="Burn Bright poster design"
+        secondaryImagePath="img/train.jpg"
+        secondaryImageAlt="Burn Bright train ad poster"
+        annotations={[
+          {
+            index: '01',
+            label: 'Bleed',
+            body: '3 mm bleed on all sides to keep the heart and glow full-bleed after trim.',
+          },
+          {
+            index: '02',
+            label: 'Trim + Safe Area',
+            body: 'Final format A2 with a 5 mm safe area; key typography and mark stay inside the safe frame.',
+          },
+          {
+            index: '03',
+            label: 'Print Spec',
+            body: 'CMYK conversion with rich blacks and controlled reds to preserve contrast and heat in print.',
+          },
+        ]}
+        details="Medium — Urban placement · Format — Print mockup · Year — 2026"
+      />
+       <PosterSection
+        sectionLabel="Poster No. 3"
+        title="The Outside Edit."
+        imagePath="img/boutside.jpg"
+        imageAlt="Burn Bright outside poster"
+        secondaryImagePath="img/predout.jpg"
+        secondaryImageAlt="Burn Bright Poster No. 2 — red outside mockup"
+        details="Medium — Exterior mockup · Format — Urban display · Year — 2026"
+      />
       <PosterSection
         sectionLabel="Poster No. 2"
         title="The Projection."
         imagePath="img/pmock.jpg"
         imageAlt="Burn Bright Poster No. 2 — projection mockup"
+        
         details="Medium — Urban mockup · Format — Street display · Year — 2026"
       />
+     
       <FadeIn direction="soft">
         <div className="mx-auto w-4/5 pt-4">
           <BrushStrokeH className="h-[14px] w-full" />
