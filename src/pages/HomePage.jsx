@@ -70,11 +70,6 @@ export default function HomePage() {
         /> */}
 
         <div className="relative z-10 mx-auto w-4/5">
-          <FadeIn direction="up" delay={0}>
-            <p className="mb-7 text-[0.63rem] uppercase tracking-[0.42em] text-white/30">
-              Good Energy 
-            </p>
-          </FadeIn>
 
           <h1
             className="mb-10 text-[clamp(4.5rem,15vw,12rem)] font-normal leading-[0.82] tracking-[-0.02em]"
@@ -203,14 +198,9 @@ export default function HomePage() {
             </FadeIn>
           ))}
 
-          <FadeIn direction="up" delay={540}>
-            <div className="mx-auto mt-14 flex w-16">
+            <div className="mx-auto mt-14 mx-auto flex w-180">
               <BrushStrokeH className="h-[14px] flex-1" />
             </div>
-            <p className="mt-6 text-[0.63rem] uppercase tracking-[0.42em] text-white/25">
-              A brand for the hour when everything else has gone quiet.
-            </p>
-          </FadeIn>
         </div>
       </section>
 
