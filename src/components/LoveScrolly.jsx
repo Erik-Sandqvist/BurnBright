@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { assetUrl } from '../lib/utils'
+import { assetUrl, displayFontStyle } from '../lib/utils'
 
 function lerp(a, b, t) {
   return a + (b - a) * t
@@ -276,8 +276,7 @@ export default function LoveScrolly() {
           <h2
             className="text-[clamp(2.5rem,8vw,7rem)] font-bold leading-[0.88] tracking-[-0.04em] text-[#fff5e6]"
             style={{
-              fontFamily: '"above-the-sky-condensed","Adore You",cursive',
-              fontStyle: 'italic',
+              ...displayFontStyle,
               opacity: captionAt,
               transform: `translateY(${(1 - captionAt) * 36}px)`,
               textShadow:
@@ -286,7 +285,6 @@ export default function LoveScrolly() {
             }}
           >
             Love burns<br />
-            <span className="text-[#ec2227]">brightest at dawn.</span>
           </h2>
           
         </div>

@@ -2,26 +2,46 @@ import FadeIn from './FadeIn'
 import TiltCard from './TiltCard'
 import { assetUrl, headingFontStyle } from '../lib/utils'
 
+function BrushStrokeH({ className = '' }) {
+  return (
+    <svg viewBox="0 0 560 14" preserveAspectRatio="none" fill="none" aria-hidden="true"
+      className={`overflow-visible ${className}`}>
+      <defs>
+        <filter id="bbh" x="-2%" y="-200%" width="104%" height="500%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.78 0.38" numOctaves="4" seed="3" result="n"/>
+          <feDisplacementMap in="SourceGraphic" in2="n" scale="2.8" xChannelSelector="R" yChannelSelector="G"/>
+        </filter>
+      </defs>
+      <path d="M2,7 C70,4 160,10 280,6 C400,3 480,9 558,6"
+        stroke="#ec2227" strokeWidth="2.5" strokeLinecap="round" opacity="0.38" filter="url(#bbh)"/>
+      <path d="M40,9 C130,6 250,11 360,8 C450,5 520,10 545,8"
+        stroke="#ec2227" strokeWidth="1" strokeLinecap="round" opacity="0.18" filter="url(#bbh)"/>
+      <path d="M2,5 C100,3 230,7 340,5 C450,3 515,7 558,5"
+        stroke="#f68a1f" strokeWidth="0.8" strokeLinecap="round" opacity="0.15" filter="url(#bbh)"/>
+    </svg>
+  )
+}
+
 const clothing = [
   {
     id: 'bb-fallback-1',
-    name: 'Burn Mark Hoodie',
+    name: 'Blue Hoodie',
     price: '499 SEK',
-    description: 'Heavyweight hoodie with a sharp, editorial silhouette and a warm red wash.',
+    description: 'Blue Hoodie',
     imageUrl: 'img/blue-hoodie.png',
   },
   {
     id: 'bb-fallback-2',
-    name: 'Ashline Tee',
+    name: 'Black Hoodie',
     price: '499 SEK',
-    description: 'Clean-cut tee with a soft feel, built for layered after-dark looks.',
+    description: 'Black Hoodie',
     imageUrl: 'img/mock-black.jpg',
   },
-  {
+  {   
     id: 'bb-fallback-3',
-    name: 'Ember Cap',
+    name: 'Green Hoodie',
     price: '499 SEK',
-    description: 'Minimal cap with a low-profile fit and a Burn Bright finish.',
+    description: 'Green Hoodie',
     imageUrl: 'img/mock.jpg',
   },
 ]
@@ -29,23 +49,23 @@ const clothing = [
 const accessories = [
   {
     id: 'bb-fallback-4',
-    name: 'Void Overshirt',
+    name: 'Cap',
     price: '199 SEK',
-    description: 'Oversized cut, washed-out ember finish. Worn open over nothing or layered tight.',
+    description: 'Unisex',
     imageUrl: 'img/cap.jpg',
   },
   {
     id: 'bb-fallback-5',
-    name: 'Stone Mark Hoodie',
+    name: 'Tote bag',
     price: '99 SEK',
-    description: 'Same silhouette, different weight. Washed stone with a faded Burn Bright stamp.',
+    description: 'Unisex, 100% cotton canvas, 38x42 cm',
     imageUrl: 'img/tote mock.jpg',
   },
   {
     id: 'bb-fallback-6',
-    name: 'Night Bomber',
-    price: '1890 SEK',
-    description: 'Satin shell, deep void lining. The piece you wear when the city goes quiet.',
+    name: 'White Hoodie special Edition',
+    price: '699 SEK',
+    description: 'Limited edition white hoodie',
     imageUrl: 'img/guty.jpg',
   },
 ]
@@ -81,9 +101,6 @@ function CategoryBlock({ label, items, baseDelay = 0 }) {
           <h2 className="text-4xl font-bold tracking-[-0.04em] text-[#f5ecec] sm:text-6xl" style={headingFontStyle}>
             {label}
           </h2>
-          <span className="font-mono text-[0.6rem] uppercase tracking-[0.3em] text-white/30">
-            {String(items.length).padStart(2, '0')} pieces
-          </span>
         </div>
       </FadeIn>
       <div className="grid gap-6 md:grid-cols-3">
@@ -104,7 +121,7 @@ export default function ProductsSection() {
 
       <div className="flex flex-col gap-20">
         <CategoryBlock label="Clothing" items={clothing} baseDelay={0} />
-        <div className="border-t border-white/[0.08]" />
+          <BrushStrokeH className="h-[14px] flex-1" />
         <CategoryBlock label="Accessories" items={accessories} baseDelay={60} />
       </div>
     </section>

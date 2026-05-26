@@ -4,19 +4,19 @@ import { assetUrl, headingFontStyle } from '../lib/utils'
 const defaultAnnotations = [
   {
     index: '01',
-    label: 'Shadow form',
-    body: 'The hoodie dissolves into its own shadow — no hard edges, no crisp product shot. The silhouette communicates mood before it communicates garment.',
+    label: 'Info',
+    body: 'A magazine cover from the early stages of the project. ',
   },
   {
     index: '02',
     label: 'The mark',
-    body: 'A hand-drawn heart in EC2227. Rough, urgent, almost graffiti. It reads as something someone did in the moment — not a logo, a declaration.',
+    body: 'Created as a visual anchor for the brand.',
   },
   {
     index: '03',
     label: 'Heat field',
-    body: 'The warm amber bleed around the figure is the visual language of the brand: contained intensity. Cold navy held inside something that wants to burn.',
-  },
+    body: 'A texture generated from a heat simulation.',
+  }
 ]
 
 export default function PosterSection({
@@ -28,7 +28,40 @@ export default function PosterSection({
   secondaryImageAlt = '',
   annotations = defaultAnnotations,
   details = 'Medium — Digital print · Format — 212500 x 18750 px ',
+  imagesOnly = false,
 }) {
+  if (imagesOnly) {
+    return (
+      <section className="mx-auto w-4/5 py-24">
+        <div className="grid gap-6 md:grid-cols-2">
+          <FadeIn direction="left">
+            <div className="group relative overflow-hidden rounded-[20px] shadow-[0_40px_90px_rgba(0,0,0,0.7),0_0_0_1px_rgba(255,255,255,0.06)]">
+              <img
+                src={assetUrl(imagePath)}
+                alt={imageAlt}
+                className="block w-full transition-transform duration-700 ease-out group-hover:scale-[1.02]"
+              />
+              <div className="absolute inset-0 bg-linear-to-t from-black/20 via-transparent to-transparent" />
+            </div>
+          </FadeIn>
+
+          {secondaryImagePath ? (
+            <FadeIn direction="right" delay={80}>
+              <div className="group relative overflow-hidden rounded-[20px] shadow-[0_40px_90px_rgba(0,0,0,0.7),0_0_0_1px_rgba(255,255,255,0.06)]">
+                <img
+                  src={assetUrl(secondaryImagePath)}
+                  alt={secondaryImageAlt || imageAlt}
+                  className="block w-full transition-transform duration-700 ease-out group-hover:scale-[1.02]"
+                />
+                <div className="absolute inset-0 bg-linear-to-t from-black/20 via-transparent to-transparent" />
+              </div>
+            </FadeIn>
+          ) : null}
+        </div>
+      </section>
+    )
+  }
+
   return (
     <section className="mx-auto w-4/5 py-24">
       <FadeIn direction="up">

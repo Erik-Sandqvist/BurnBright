@@ -5,32 +5,12 @@ import ProductsSection from '../components/ProductsSection'
 import Marquee from '../components/Marquee'
 import ParallaxImg from '../components/ParallaxImg'
 import HorizontalScroll from '../components/HorizontalScroll'
+import BrushStrokeH from '../components/BrushStrokeH'
+import Footer from '../components/Footer'
 import { assetUrl, displayFontStyle, headingFontStyle } from '../lib/utils'
 
-function BrushStrokeH({ className = '' }) {
-  return (
-    <svg
-      viewBox="0 0 560 14"
-      preserveAspectRatio="none"
-      fill="none"
-      aria-hidden="true"
-      className={`overflow-visible ${className}`}
-    >
-      <defs>
-        <filter id="bbh-home" x="-2%" y="-200%" width="104%" height="500%">
-          <feTurbulence type="fractalNoise" baseFrequency="0.78 0.38" numOctaves="4" seed="3" result="n" />
-          <feDisplacementMap in="SourceGraphic" in2="n" scale="2.8" xChannelSelector="R" yChannelSelector="G" />
-        </filter>
-      </defs>
-      <path d="M2,7 C70,4 160,10 280,6 C400,3 480,9 558,6" stroke="#ec2227" strokeWidth="2.5" strokeLinecap="round" opacity="0.38" filter="url(#bbh-home)" />
-      <path d="M40,9 C130,6 250,11 360,8 C450,5 520,10 545,8" stroke="#ec2227" strokeWidth="1" strokeLinecap="round" opacity="0.18" filter="url(#bbh-home)" />
-      <path d="M2,5 C100,3 230,7 340,5 C450,3 515,7 558,5" stroke="#f68a1f" strokeWidth="0.8" strokeLinecap="round" opacity="0.15" filter="url(#bbh-home)" />
-    </svg>
-  )
-}
-
 const manifesto = [
-  { num: '01', line: 'Let Love Burn', sub: 'Interpret in your way' },
+  { num: '01', line: 'Let Love Burn', sub: 'Interpret it in your way' },
   { num: '02', line: 'Love is everywhere', sub: 'Embrace it' },
   { num: '03', line: 'The Love Language', sub: "Spoken by Everyone" },
 ]
@@ -130,9 +110,9 @@ export default function HomePage() {
       </section>
 
       {/* ─── MARQUEE ─── */}
-      <Marquee
-        text="BURN BRIGHT · AFTER DARK ENERGY · LIMITED COLOR STORY · EDIT THE NIGHT · A MOOD STUDY · EC2227 · THE RED · SMOLDERING · INTENTIONAL"
-        speed={42}
+       <Marquee
+        text="Fire · Love · Let it Burn · You · Me · Us · Burn Bright · "
+        speed={36}
       />
 
   {/* ─── PRODUCTS ─── */}
@@ -140,12 +120,7 @@ export default function HomePage() {
 
       {/* ─── HORIZONTAL SCROLL ARCHIVE ─── */}
       <HorizontalScroll />
-
-      {/* ─── MARQUEE 2 ─── */}
-      <Marquee
-        text="THE SKY · THE MARK · THE PORTRAIT · THE CITY · THE POSTER · AFTER DARK · THE OBJECT"
-        speed={36}
-      />
+     
 
       {/* ─── MANIFESTO ─── */}
       <section className="mx-auto w-4/5 py-28 sm:py-40">
@@ -163,20 +138,20 @@ export default function HomePage() {
                 </div>
               </FadeIn>
               <FadeIn key={item.num} direction={i % 2 === 0 ? 'left' : 'right'} delay={i * 90}>
-                <div className="group grid grid-cols-[4rem_1fr] items-end gap-6 py-12 sm:grid-cols-[7rem_1fr] sm:gap-14 sm:py-16">
+                <div className="group grid grid-cols-[2rem_1fr] items-end gap-2 py-2 sm:grid-cols-[7rem_1fr] sm:gap-14 sm:py-16">
                   <span className="pb-1 font-mono text-[0.6rem] uppercase tracking-[0.32em] text-[#f68a1f]/45 transition-colors duration-400 group-hover:text-[#ec2227]/75">
                     {item.num}
                   </span>
                   <div>
                     <p
                       className="text-[clamp(2rem,4.8vw,4.2rem)] font-semibold leading-[0.92] tracking-[0.03em] text-[#feeadd] transition-colors duration-400 group-hover:text-white"
-                      style={headingFontStyle}
+                      style={displayFontStyle}
                     >
                       {item.line}
                     </p>
                     <p
                       className="text-[clamp(2rem,4.8vw,4.2rem)] font-semibold leading-[0.92] tracking-[0.03em] text-[#f68a1f] transition-colors duration-400 group-hover:text-[#ec2227]/60"
-                      style={headingFontStyle}
+                      style={displayFontStyle}
                     >
                       {item.sub}
                     </p>
@@ -221,7 +196,7 @@ export default function HomePage() {
                     ? 'text-[#feeadd] [text-shadow:0_0_100px_rgba(246,138,31,0.15)]'
                     : 'text-[#ec2227] [text-shadow:0_0_60px_rgba(236,34,39,0.6),0_0_130px_rgba(236,34,39,0.22)]',
                 ].join(' ')}
-                style={headingFontStyle}
+                style={displayFontStyle}
               >
                 {line}
               </p>
@@ -262,7 +237,7 @@ export default function HomePage() {
       <div className="py-16">
         <FadeIn direction="soft">
           <img
-            className="pointer-events-none mx-auto block w-1/2 opacity-[0.27]"
+            className="pointer-events-none mx-auto block w-1/6 opacity-[0.27]"
             src={assetUrl('img/logo.svg')}
             alt="Burn Bright"
             style={{ animation: 'float 7s ease-in-out infinite' }}
@@ -270,16 +245,7 @@ export default function HomePage() {
         </FadeIn>
       </div>
 
-      {/* ─── FOOTER ─── */}
-      <footer className="mx-auto w-4/5 pb-6 pt-2" id="contact">
-        <div className="mb-4 flex w-[min(100%,240px)]">
-          <BrushStrokeH className="h-[14px] flex-1" />
-        </div>
-        <p className="text-[0.63rem] uppercase tracking-[0.22em] text-white/22">
-          Burn Bright / a mood study for a fictional label.
-        </p>
-      </footer>
-
+      <Footer variant="home" />
     </main>
   )
 }

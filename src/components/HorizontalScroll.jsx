@@ -54,7 +54,7 @@ export default function HorizontalScroll() {
               className="text-[clamp(1.6rem,3vw,2.6rem)] font-normal leading-none tracking-[-0.02em] text-[#feeadd]"
               style={headingFontStyle}
             >
-              The Visual Story
+              Some of the Visuals
             </p>
           </div>
           <p className="font-mono text-[0.6rem] uppercase tracking-[0.3em] text-white/30">

@@ -5,6 +5,7 @@ import PosterSection from '../components/PosterSection'
 import DomeGallery from '../components/DomeGallery'
 import LoveScrolly from '../components/LoveScrolly'
 import HorizontalScroll from '../components/HorizontalScroll'
+import Footer from '../components/Footer'
 import { assetUrl, displayFontStyle, headingFontStyle } from '../lib/utils'
 
 function BrushStrokeH({ className = '' }) {
@@ -60,7 +61,7 @@ const typefaces = [
     name: 'Above The Sky',
     weight: 'Condensed Cursivey',
     role: 'Display · Logotype',
-    sample: 'Burn Bright',
+    sample: 'Logo and titles',
     family: '"above-the-sky-condensed","Adore You","Geist Variable",sans-serif',
     fontWeight: 400,
     size: 'clamp(2.6rem, 7vw, 5.5rem)',
@@ -71,7 +72,7 @@ const typefaces = [
     name: 'Bahnschrift',
     weight: 'SemiBold',
     role: 'Headings · UI',
-    sample: 'AFTER DARK',
+    sample: 'Headings and UI elements',
     family: '"Bahnschrift","Inter","Geist Variable","Segoe UI",sans-serif',
     fontWeight: 600,
     size: 'clamp(2rem, 5.5vw, 4rem)',
@@ -82,7 +83,7 @@ const typefaces = [
     name: 'Area Extended',
     weight: 'Medium',
     role: 'Body · Captions',
-    sample: 'A mood study, not a product line.',
+    sample: 'Body text and caption elements',
     family: '"Area Extended","Inter","Geist Variable",sans-serif',
     fontWeight: 500,
     size: 'clamp(1.25rem, 2.4vw, 2rem)',
@@ -489,9 +490,7 @@ export default function VisualPage() {
             className="mb-4 text-4xl font-bold tracking-[-0.04em] text-[#f5ecec] sm:text-6xl"
             style={headingFontStyle}
           >
-            The Object.
-            <br />
-            The Mark. The City.
+            The Brand
           </h2>
         </FadeIn>
         <FadeIn direction="left" delay={120}>
@@ -568,7 +567,7 @@ export default function VisualPage() {
           {
             index: '01',
             label: 'Bleed',
-            body: '3 mm bleed on all sides to keep the heart and glow full-bleed after trim.',
+            body: '5 mm bleed on all sides to keep the heart and glow full-bleed after trim.',
           },
           {
             index: '02',
@@ -585,15 +584,14 @@ export default function VisualPage() {
       />
        <PosterSection
         sectionLabel="Poster No. 3"
-        title="The Outside Edit."
         imagePath="img/boutside.jpg"
         imageAlt="Burn Bright outside poster"
         secondaryImagePath="img/predout.jpg"
         secondaryImageAlt="Burn Bright Poster No. 2 — red outside mockup"
-        details="Medium — Exterior mockup · Format — Urban display · Year — 2026"
+        imagesOnly
       />
       <PosterSection
-        sectionLabel="Poster No. 2"
+        sectionLabel="Magazine"
         title="The Projection."
         imagePath="img/pmock.jpg"
         imageAlt="Burn Bright Poster No. 2 — projection mockup"
@@ -637,7 +635,7 @@ export default function VisualPage() {
       <LoveScrolly />
 
       {/* Video */}
-      <section className="mx-auto my-8 w-5/6">
+      <section className="mx-auto my-8 full">
         <FoldIn>
           <div className="overflow-hidden rounded-[28px] shadow-[0_40px_90px_rgba(0,0,0,0.7),0_0_0_1px_rgba(255,255,255,0.07)]">
             <video className="block w-full" muted autoPlay loop playsInline>
@@ -646,9 +644,49 @@ export default function VisualPage() {
           </div>
         </FoldIn>
       </section>
+       {/* Press PDF — view and download */}
+      <section className="mx-auto w-4/5 py-12">
+        <FadeIn direction="up">
+          <div className="mb-6 flex flex-col-reverse items-start gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <div className="flex items-center gap-3">
+              <a
+                href="/burnbright.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full border border-white/10 px-4 py-2 text-sm text-white/80 hover:bg-white/5 transition-colors"
+                aria-label="Open Burn Bright PDF in new tab"
+              >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="opacity-90">
+                  <path d="M12 5v14M5 12h14" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+                Open
+              </a>
+
+              <a
+                href="/burnbright.pdf"
+                download
+                className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#ff6b6b] to-[#ec2227] px-4 py-2 text-sm font-semibold text-white shadow-[0_8px_30px_rgba(236,34,39,0.18)] transform transition-transform hover:-translate-y-0.5"
+                aria-label="Download Burn Bright PDF"
+              >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="opacity-95">
+                  <path d="M12 3v12M7 10l5 5 5-5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                  <path d="M5 21h14" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+                Download PDF
+              </a>
+            </div>
+            <p className="text-[0.68rem] uppercase tracking-[0.3em] text-white/50">Press Kit</p>
+          </div>
+        </FadeIn>
+
+        <div className="mt-2">
+          <p className="text-sm text-white/50">You can view the work that led to the creation of this site, open the PDF in a new tab or download the file.</p>
+        </div>
+      </section>
       <div className="mb-1">
         <BrushStrokeH className="h-[14px] w-full" />
       </div>
+      
       {/* Credits */}
       <section className="mx-auto w-full p-12">
         <div className="grid gap-8 pt-4 sm:grid-cols-3">
@@ -671,19 +709,10 @@ export default function VisualPage() {
         </div>
       </section>
 
-      <footer className="w-full p-12 pt-2" id="contact">
-        <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2 text-[0.58rem] uppercase tracking-[0.2em] text-white/35">
-          <span>© 2026 Burn Bright Studio</span>
-          <span className="text-white/20">•</span>
-          <a href="#" className="transition-colors hover:text-white/55">Privacy</a>
-          <a href="#" className="transition-colors hover:text-white/55">Terms</a>
-          <a href="#" className="transition-colors hover:text-white/55">Cookies</a>
-          <a href="#" className="transition-colors hover:text-white/55">Disclaimer</a>
-        </div>
-        <p className="mt-2 text-[0.56rem] uppercase tracking-[0.16em] text-white/25">
-          All names, products, and campaigns shown are fictional for concept presentation only.
-        </p>
-      </footer>
+     
+
+      <Footer />
     </main>
   );
 }
+
