@@ -650,7 +650,7 @@ export default function VisualPage() {
           <div className="mb-6 flex flex-col-reverse items-start gap-3 sm:flex-row sm:items-center sm:justify-between">
             <div className="flex items-center gap-3">
               <a
-                href="/burnbright.pdf"
+                href={assetUrl('burnbright.pdf')}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 rounded-full border border-white/10 px-4 py-2 text-sm text-white/80 hover:bg-white/5 transition-colors"
@@ -663,7 +663,7 @@ export default function VisualPage() {
               </a>
 
               <a
-                href="/burnbright.pdf"
+                href={assetUrl('burnbright.pdf')}
                 download
                 className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#ff6b6b] to-[#ec2227] px-4 py-2 text-sm font-semibold text-white shadow-[0_8px_30px_rgba(236,34,39,0.18)] transform transition-transform hover:-translate-y-0.5"
                 aria-label="Download Burn Bright PDF"
